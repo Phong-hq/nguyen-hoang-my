@@ -4,8 +4,10 @@
         <div class="flex items-center justify-end">
             <div 
                 class="w-[110px] font-semibold text-right duration-[0.4s] hover:text-primary cursor-pointer tracking-[-1px]" 
+                :class="{ '!text-primary': idActive == item.id }"
                 v-for="(item, index) in navList" 
                 :key="index"
+                @click="goToSection(item?.id)"
             >
                 {{ item.label }}
             </div>
@@ -16,11 +18,73 @@
 <script lang="ts" setup>
 import {ref} from 'vue';
 
+const router = useRouter();
+const idActive = ref('about-me-section');
+const documentHeight = ref(0);
+const state = ref<{id: string, top: number}[]>([]);
 const navList = ref([
-    {label: 'Home', value: 'test'},
-    {label: 'My Vlog', value: 'test'},
-    {label: 'My Story', value: 'test'},
-    {label: 'My Life', value: 'test'},
-    {label: 'Follow Me', value: 'test'},
+    {label: 'Home', id: 'home-section'},
+    {label: 'About me', id: 'about-me-section'},
+    {label: 'My itinerary', id: 'my-itinerary-section'},
+    {label: 'Play chess', id: 'play-chess-section'},
+    {label: 'Sport', id: 'sport-section'},
+    {label: 'Music', id: 'music-section'},
 ])
+
+onMounted(async () => {
+  await router.isReady();
+    getOffsetTop();
+  goToSection(idActive.value);
+//   window.addEventListener('resize', setViewportProperty());
+  window.addEventListener('scroll', handelScroll)
+});
+onUnmounted(() => {
+//   window.removeEventListener('resize', setViewportProperty());
+  window.removeEventListener('scroll', handelScroll);
+})
+
+const handelScroll = (e: any) => {
+    const top = window?.top?.scrollY || 0;
+    if(documentHeight.value > 0 && (top + window.innerHeight + 105) >= documentHeight.value) {
+        idActive.value = state.value[state.value.length - 1].id;
+        return;
+    }
+    idActive.value =  state.value.reduce((result: string, item: any) => result = item?.top <= top + 105 ? item?.id : result, 'photo-section');
+}
+const goToSection = (a: string) => {
+    idActive.value = a;
+    let element = document.getElementById(idActive.value);
+    if (element) {
+        const top = element.offsetTop;
+        if (idActive.value === 'photo-section') {
+            window.scrollTo({top: 0, behavior: 'smooth'})
+        } else if (idActive.value !== 'photo-section') {
+            window.scrollTo({top: top - 100, behavior: 'smooth'})
+        }
+    }
+}
+const getOffsetTop = () => {
+    const section = document?.querySelectorAll('.section-element');
+    section?.forEach((e: any) => {
+        const item = navList.value.find((menu) => e.id == menu.id);
+        const index = state.value.findIndex((a) => a.id == item?.id);
+        const obj = {
+            id: item?.id || '',
+            top: Number(e.offsetTop)
+        }
+        if(index == -1) state.value.push(obj);
+        else state.value[index] = obj;
+        // if(item?.hidden) {
+        // }
+    })
+    const body = document.body;
+    const html = document.documentElement;
+    documentHeight.value = Math.max( body?.scrollHeight || 0 , body?.offsetHeight || 0 , 
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+}
+
+// getOffsetTop();
+
 </script>
+
+<!-- <style ></style> -->

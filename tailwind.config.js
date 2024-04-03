@@ -11,6 +11,7 @@ export default {
     extend: {
       colors: {
         primary: 'var(--color-primary)',
+        dark1: 'var(--color-dark)',
       },
     },
   },

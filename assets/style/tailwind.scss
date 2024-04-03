@@ -16,10 +16,9 @@
         word-break: break-word;
     }
     .container{
-        // @media (max-width: 639px) {
-        //     padding-left: 20px;
-        //     padding-right: 20px;
-        // }
+        @media (min-width: 1536px) {
+            max-width: 1280px;
+        }
     }
 
 }

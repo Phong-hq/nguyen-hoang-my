@@ -1,8 +1,30 @@
 @import "variables";
+@import "font-arial";
 @import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap');
 
 
 body {
     font-family: "Wix Madefor Text", sans-serif;
     color: var(--color-text);
+}
+
+.heading-1{
+    font-size: 45px;
+    // color: var(--color-primary);
+    color: #242424;
+    font-weight: 600;
+    padding: 42px 0;
+    text-align: center;
+    // text-transform: capitalize;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-family: arial;
+}
+
+section{
+    padding-bottom: 80px;
+}
+
+.arial{
+    font-family: arial;
 }
