@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .flex-center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .sc-full{
+        width: 100%;
+        height: 100%;
+    }
+    .word-break{
+        word-break: break-word;
+    }
+    .container{
+        // @media (max-width: 639px) {
+        //     padding-left: 20px;
+        //     padding-right: 20px;
+        // }
+    }
+
+}

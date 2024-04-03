@@ -4,5 +4,11 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss'],
   css: [
     '@/assets/style/tailwind.scss',
+    '@/assets/style/index.scss',
   ],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+    },
+  },
 })
