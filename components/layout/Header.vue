@@ -1,5 +1,5 @@
 <template>
-    <header class="flex justify-between sticky top-0 left-0 w-full h-[90px] bg-transparent container z-10">
+    <header class="flex justify-between sticky top-0 left-0 w-full h-[90px] bg-transparent container mx-auto z-10">
         <div></div>
         <div class="flex items-center justify-end">
             <div 
@@ -29,6 +29,7 @@ const navList = ref([
     {label: 'Play chess', id: 'play-chess-section'},
     {label: 'Sport', id: 'sport-section'},
     {label: 'Music', id: 'music-section'},
+    {label: 'Handmade', id: 'handmade-section'},
 ])
 
 onMounted(async () => {
@@ -45,21 +46,24 @@ onUnmounted(() => {
 
 const handelScroll = (e: any) => {
     const top = window?.top?.scrollY || 0;
-    if(documentHeight.value > 0 && (top + window.innerHeight + 105) >= documentHeight.value) {
+    if(documentHeight.value > 0 && (top + window.innerHeight) >= documentHeight.value) {
         idActive.value = state.value[state.value.length - 1].id;
         return;
     }
-    idActive.value =  state.value.reduce((result: string, item: any) => result = item?.top <= top + 105 ? item?.id : result, 'photo-section');
+    idActive.value =  state.value.reduce((result: string, item: any) => result = item?.top <= top ? item?.id : result, 'photo-section');
 }
 const goToSection = (a: string) => {
     idActive.value = a;
     let element = document.getElementById(idActive.value);
     if (element) {
         const top = element.offsetTop;
-        if (idActive.value === 'photo-section') {
+        if (idActive.value === 'home-section') {
             window.scrollTo({top: 0, behavior: 'smooth'})
-        } else if (idActive.value !== 'photo-section') {
-            window.scrollTo({top: top - 100, behavior: 'smooth'})
+        } else if(idActive.value === 'my-itinerary-section') {
+            window.scrollTo({top: top - 200, behavior: 'smooth'})
+        }
+        else if (idActive.value !== 'home-section') {
+            window.scrollTo({top: top, behavior: 'smooth'})
         }
     }
 }

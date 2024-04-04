@@ -1,13 +1,13 @@
 <template>
-  <div>
+  <div class="pb-[0px]">
     <layout-header/>
-    <lazy-banner id="home-section"  />
-    <lazy-about-me id="about-me-section" />
-    <lazy-my-itinerary id="my-itinerary-section" />
-    <lazy-play-chess id="play-chess-section" />
-    <lazy-sport id="sport-section" />
-    <lazy-music id="music-section" />
-    <div class="w-full h-[900px]"></div>
+    <lazy-banner class="section-element" id="home-section"  />
+    <lazy-about-me class="section-element" id="about-me-section" />
+    <lazy-my-itinerary class="section-element"id="my-itinerary-section" />
+    <lazy-play-chess class="section-element" id="play-chess-section" />
+    <lazy-sport class="section-element" id="sport-section" />
+    <lazy-music class="section-element" id="music-section" />
+    <lazy-handmade class="section-element" id="handmade-section" />
   </div>
 </template>
 

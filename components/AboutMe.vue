@@ -1,16 +1,18 @@
 <template>
     <section class="container mx-auto">
-        <p class="heading-1">About me</p>
         <div class="w-full grid grid-cols-2 gap-x-7">
-            <div class="w-full  h-[500px] flex relative">
-                <img class="max-w-[440px] h-full object-cover object-right-top absolute right-0 top-0" src="@/assets/images/banner.jpg" alt="">
+            <div class="w-full  h-[400px] flex relative">
+                <img class="max-w-[440px] h-[200px] h-full object-cover object-right-top absolute right-0 top-0" src="@/assets/images/banner.jpg" alt="">
             </div>
-            <div class="text-[18px]">
-                <p><span class="font-bold">Name:</span> Trần Hoàng My</p>
-                <p><span class="font-bold">Year of Birth:</span> ---</p>
-                <p><span class="font-bold">Gender:</span> ---</p>
-                <p><span class="font-bold">school:</span> ---</p>
-                <p><span class="font-bold">Year of Birth:</span> ---</p>
+            <div class="flex-center !justify-start w-[80%] flex-col text-[18px]">
+                <p class="heading-1 !py-7">About me</p>
+                <div class="w-full">
+                    <p><span class="font-bold">Name:</span> Trần Hoàng My</p>
+                    <p><span class="font-bold">Year of Birth:</span> ---</p>
+                    <p><span class="font-bold">Gender:</span> ---</p>
+                    <p><span class="font-bold">school:</span> ---</p>
+                    <p><span class="font-bold">Year of Birth:</span> ---</p>
+                </div>
             </div>
         </div>
     </section>
