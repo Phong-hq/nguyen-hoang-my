@@ -1,15 +1,17 @@
 <template>
-    <header class="flex justify-between sticky top-0 left-0 w-full h-[90px] bg-transparent container mx-auto z-10">
-        <div></div>
-        <div class="flex items-center justify-end">
-            <div 
-                class="w-[110px] font-semibold text-right duration-[0.4s] hover:text-primary cursor-pointer tracking-[-1px]" 
-                :class="{ '!text-primary': idActive == item.id }"
-                v-for="(item, index) in navList" 
-                :key="index"
-                @click="goToSection(item?.id)"
-            >
-                {{ item.label }}
+    <header class="sticky top-0 left-0 w-full h-[90px] bg-white z-10">
+        <div class="w-full flex justify-between  sc-full container  mx-auto">
+            <div></div>
+            <div class="flex items-center justify-end">
+                <div 
+                    class="pl-[60px] font-semibold text-right duration-[0.4s] hover:text-primary cursor-pointer tracking-[-1px]" 
+                    :class="{ '!text-primary': idActive == item.id }"
+                    v-for="(item, index) in navList" 
+                    :key="index"
+                    @click="goToSection(item?.id)"
+                >
+                    {{ item.label }}
+                </div>
             </div>
         </div>
     </header>
@@ -46,11 +48,11 @@ onUnmounted(() => {
 
 const handelScroll = (e: any) => {
     const top = window?.top?.scrollY || 0;
-    if(documentHeight.value > 0 && (top + window.innerHeight) >= documentHeight.value) {
+    if(documentHeight.value > 0 && (top + 90+ window.innerHeight) >= documentHeight.value) {
         idActive.value = state.value[state.value.length - 1].id;
         return;
     }
-    idActive.value =  state.value.reduce((result: string, item: any) => result = item?.top <= top ? item?.id : result, 'photo-section');
+    idActive.value =  state.value.reduce((result: string, item: any) => result = item?.top <= top + 90 ? item?.id : result, 'photo-section');
 }
 const goToSection = (a: string) => {
     idActive.value = a;
@@ -60,10 +62,10 @@ const goToSection = (a: string) => {
         if (idActive.value === 'home-section') {
             window.scrollTo({top: 0, behavior: 'smooth'})
         } else if(idActive.value === 'my-itinerary-section') {
-            window.scrollTo({top: top - 200, behavior: 'smooth'})
+            window.scrollTo({top: top - 290, behavior: 'smooth'})
         }
         else if (idActive.value !== 'home-section') {
-            window.scrollTo({top: top, behavior: 'smooth'})
+            window.scrollTo({top: top - 90, behavior: 'smooth'})
         }
     }
 }
