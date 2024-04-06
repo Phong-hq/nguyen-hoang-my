@@ -8,7 +8,7 @@
                     :class="{ '!text-primary': idActive == item.id }"
                     v-for="(item, index) in navList" 
                     :key="index"
-                    @click="goToSection(item?.id)"
+                    @click="handleNavClick(item)"
                 >
                     {{ item.label }}
                 </div>
@@ -21,16 +21,17 @@
 import {ref} from 'vue';
 
 const router = useRouter();
+const route = useRoute();
 const idActive = ref('about-me-section');
 const documentHeight = ref(0);
 const state = ref<{id: string, top: number}[]>([]);
 const navList = ref([
     {label: 'Home', id: 'home-section'},
-    {label: 'About me', id: 'about-me-section'},
+    // {label: 'About me', id: 'about-me-section'},
     {label: 'My itinerary', id: 'my-itinerary-section'},
     {label: 'Play chess', id: 'play-chess-section'},
-    {label: 'Sport', id: 'sport-section'},
     {label: 'Music', id: 'music-section'},
+    {label: 'Sport', id: 'sport-section'},
     {label: 'Handmade', id: 'handmade-section'},
 ])
 
@@ -87,6 +88,15 @@ const getOffsetTop = () => {
     const html = document.documentElement;
     documentHeight.value = Math.max( body?.scrollHeight || 0 , body?.offsetHeight || 0 , 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
+}
+
+const handleNavClick = (item: any) => {
+    if(route.name != 'index') {
+        router.push({name: 'index'});
+        setTimeout(() => {
+            goToSection(item.id);
+        }, 500);
+    } else  goToSection(item.id);
 }
 
 // getOffsetTop();
