@@ -3,7 +3,7 @@
         <div class="container mx-auto">
             <p class="heading-1">Handmade</p>
             <p class="heading-2">Your personal commercial should be conversational and natural. The statement should not sound memorized and you should take care not to ramble. You want to appear confident, poised, and professional.</p>
-            <p>option 1</p>
+            <!-- <p>option 1</p> -->
 
             <div class="grid grid-cols-2 gap-7">
                 <div class="col-span-1">
@@ -49,8 +49,8 @@
                     </swiper>
                 </div>
             </div>
-            <p>option 2</p>
-            <div class="grid grid-cols-3 gap-7 mt-7">
+            <!-- <p>option 2</p> -->
+            <div class="grid grid-cols-3 gap-7 mt-7 !hidden ">
                 <div class="col-span-1">
                     <video class="sc-full aspect-[3_/_3] border-1" height="300px" autoplay muted loop id="vid" style="border: solid 1px #000;">
                         <source src="../../assets/video/mov_bbb.mp4" type="video/mp4">
