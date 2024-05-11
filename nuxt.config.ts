@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-swiper'],
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-swiper', "@pinia/nuxt"],
   css: [
     '@/assets/style/tailwind.scss',
     '@/assets/style/index.scss',

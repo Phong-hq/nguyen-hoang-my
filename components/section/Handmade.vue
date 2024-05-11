@@ -2,22 +2,23 @@
     <section class="bg-dark1">
         <div class="container mx-auto">
             <p class="heading-1">Handmade</p>
-            <p class="heading-2">Your personal commercial should be conversational and natural. The statement should not sound memorized and you should take care not to ramble. You want to appear confident, poised, and professional.</p>
+            <p class="heading-2">{{ handMade?.description || '' }}</p>
             <!-- <p>option 1</p> -->
 
             <div class="grid grid-cols-2 gap-7">
-                <div class="col-span-1">
-                    <video class="sc-full aspect-square border-1" height="300px" autoplay muted loop id="vid" style="border: solid 1px #000;">
+                <div class="col-span-1 overflow-hidden">
+                    <!-- <video class="sc-full aspect-square border-1" height="300px" autoplay muted loop id="vid" style="border: solid 1px #000;">
                         <source src="../../assets/video/mov_bbb.mp4" type="video/mp4">
                         Your browser does not support HTML video.
-                    </video>
+                    </video> -->
+                    <file-component class="w-full !h-full" :url="handMade?.video" type="video" :collection="COLLECTION.HAND_MAKE" :id="handMade?.id"/>
                 </div>
                 <!-- <div class="grid grid-cols-3 gap-4">
                     <div class="aspect-square" v-for="item in 8" :key="item">
                         <empty-image />
                     </div>
                 </div> -->
-                <div class="">
+                <div class="" v-if="imageLength">
                     <swiper
                         :style="{
                             '--swiper-navigation-color': '#fff',
@@ -38,10 +39,11 @@
                         :modules="modules"
                         class="mySwiper"
                     >
-                        <swiper-slide  v-for="item2 in 6" :key="item2">
+                        <swiper-slide  v-for="item in imageLength" :key="item">
                             <div class="flex flex-col gap-y-7">
-                                <div class="aspect-square" v-for="item in 3" :key="item">
-                                    <empty-image />
+                                <div class="aspect-square overflow-hidden" v-for="item2 in 3" :key="item2">
+                                    <!-- <empty-image /> -->
+                                    <file-component class="!h-full" :url="imageUrl(item, item2)" :collection="COLLECTION.HAND_MAKE" :id="handMade?.id" />
                                 </div>
                             </div>
                         </swiper-slide>
@@ -154,6 +156,10 @@
 import { ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Zoom, Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { useAuthStore } from '~/store/auth';
+import { storeToRefs } from 'pinia';
+import  {COLLECTION} from "@/pocketbase";
+
 // Import Swiper styles
 import 'swiper/css';
 
@@ -161,9 +167,20 @@ import 'swiper/css/zoom';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+const authStore = useAuthStore();
+
+const { handMade } = storeToRefs(authStore);
+
 const modules = ref([Zoom, Navigation, Pagination, Autoplay]);
-const getImageUrl = (name: string | number) => {
-    return new URL(`../assets/images/handmade/${name}.jpg`, import.meta.url).href ;
+
+const imageLength = computed(() => {
+    if(!handMade.value) return 0;
+    return ((handMade.value?.image?.length || 0) / 3) + ((handMade.value?.image?.length || 0) % 3 > 0 ? 1 : 0);
+})
+
+const imageUrl = (index1, index2) => {
+    if(!handMade.value) return '';
+    return handMade.value?.image[(index1-1) * 3 + index2] || ''
 }
 </script>
 

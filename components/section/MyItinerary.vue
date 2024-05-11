@@ -2,8 +2,8 @@
     <section class="bg-dark1 h-[500px] bg-[#f1f1f1] mt-[200px] relative my-itinerary">
         <div class="container mx-auto translate-x-1/2 absolute top-[-240px] right-1/2">
             <p class="heading-1 container">My itinerary</p>
-            <p class="heading-2">Your personal commercial should be conversational and natural. The statement should not sound memorized and you should take care not to ramble. You want to appear confident, poised, and professional.</p>
-            <div class="w-full max-w-[900px] h-[520px] mx-auto relative mt-10">
+            <p class="heading-2">{{itinerary?.description || ''}}</p>
+            <div class="w-full max-w-[900px] h-[520px] mx-auto relative mt-10" v-if="itinerary?.image?.length > 0">
                 <div class="absolute top-[-15px] left-[-15px] w-[calc(100%_+_30px)] h-[150px] bg-primary"></div>
                 <swiper
                     :style="{
@@ -22,17 +22,12 @@
                     :modules="modules"
                     class="mySwiper"
                 >
-                    <!-- <swiper-slide v-for="item in 13" :key="item">
+                    <swiper-slide v-for="item in itinerary?.image" :key="item">
                         <div class="swiper-zoom-container object-cover bg-white">
-                            <img class="h-[500px] w-full" :src="getImageUrl(item)" />
-                        </div> 
-                    </swiper-slide> -->
-                    <swiper-slide>
-                        <div class="swiper-zoom-container object-cover bg-white">
-                            <img class="h-[500px] w-full" src="../../assets/images/my-itinerary/1.jpg" />
+                            <file-component class="!h-[500px]" :url="item" :collection="COLLECTION.ITINERARY" :id="itinerary?.id"/>
                         </div> 
                     </swiper-slide>
-                    <swiper-slide>
+                    <!-- <swiper-slide>
                         <div class="swiper-zoom-container object-cover bg-white">
                             <img class="h-[500px] w-full" src="../../assets/images/my-itinerary/2.jpg" />
                         </div> 
@@ -91,15 +86,18 @@
                         <div class="swiper-zoom-container object-cover bg-white">
                             <img class="h-[500px] w-full" src="../../assets/images/my-itinerary/13.jpg" />
                         </div> 
-                    </swiper-slide>
+                    </swiper-slide> -->
                 </swiper>
             </div>
         </div>
     </section>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ref } from 'vue';
+import { useAuthStore } from '~/store/auth';
+import { storeToRefs } from 'pinia';
+import  {COLLECTION} from "@/pocketbase";
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Zoom, Navigation, Pagination, Autoplay } from 'swiper/modules';
 // Import Swiper styles
@@ -109,11 +107,12 @@ import 'swiper/css/zoom';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+const authStore = useAuthStore();
+const { itinerary } = storeToRefs(authStore);
+
 const modules = ref([Zoom, Navigation, Pagination, Autoplay]);
 
-const getImageUrl = (name: number) => {
-    return new URL(`../../assets/images/my-itinerary/${name}.jpg`, import.meta.url).href;
-}
+
 </script>
 
 <style lang="scss">

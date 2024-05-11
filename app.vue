@@ -1,15 +1,31 @@
 <template>
   <NuxtLayout class="default">
-    <NuxtPage />
+    <div class="w-screen h-screen" v-if="loading"></div>
+    <NuxtPage  v-else/>
   </NuxtLayout>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-onMounted(() => {
-  setTimeout(() => {
-    lazyLoad.value = true;
-  }, 1000);
+import { useAuthStore } from './store/auth';
+
+const authStore = useAuthStore();
+
+const loading = ref(true);
+onMounted(async () => {
+  try {
+    loading.value = true;
+    authStore.getMyItinerary();
+    authStore.getChessInfo();
+    authStore.getMusicInfo();
+    authStore.getSportInfo();
+    authStore.gethandMadeInfo();
+    await authStore.getInformation();
+  } catch (error) {
+    console.log(error);
+  } finally {
+    loading.value = false;
+  }
 })
 const lazyLoad = ref(false);
 </script>
