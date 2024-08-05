@@ -12,7 +12,7 @@
         </div>
         <!-- <div class="w-full flex justify-end">
         </div> -->
-        <see-more-btn />
+        <see-more-btn url="chess" />
     </section>
 </template>
 

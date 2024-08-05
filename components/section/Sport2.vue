@@ -8,14 +8,14 @@
 
             </div>
             <div class="aspect-[3_/_2]" v-for="item in 4" :key="item">
-                <file-component :url="sport?.list_image?.length ? chess?.list_image[item-1] : ''" :collection="COLLECTION.SPORT" :id="sport?.id" />
+                <file-component :url="sport?.list_image?.length ? sport?.list_image[item-1] : ''" :collection="COLLECTION.SPORT" :id="sport?.id" />
             </div>
         </div>
-        <see-more-btn />
+        <see-more-btn url="sport"/>
     </section>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { useAuthStore } from '~/store/auth';
 import { storeToRefs } from 'pinia';
 import  {COLLECTION} from "@/pocketbase";

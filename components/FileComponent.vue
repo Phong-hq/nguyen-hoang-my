@@ -11,5 +11,5 @@
 
 <script setup>
     const props = defineProps(['type', 'url', 'collection', 'id']);
-    const link = computed(() => `http://127.0.0.1:8090/api/files/${props.collection}/${props.id}/${props.url}`)
+    const link = computed(() => `https://admin.nguyen-hoang-my.com/api/files/${props.collection}/${props.id}/${props.url}`)
 </script>

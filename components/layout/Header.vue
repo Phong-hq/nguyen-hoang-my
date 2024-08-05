@@ -34,7 +34,6 @@ const state = computed<{id: string, top: number}[]>(() =>{
     let result = [];
     section?.forEach((e: any) => {
         const item = navList.value.find((menu) => e.id == menu.id);
-        // const index = state.value.findIndex((a) => a.id == item?.id);
         const obj = {
             id: item?.id || '',
             top: Number(e.offsetTop)

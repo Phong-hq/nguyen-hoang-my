@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import pb from "@/pocketbase"
-import {pbGetItem, COLLECTION} from "@/pocketbase"
+import {pbGetItem, pbGetFullList, COLLECTION} from "@/pocketbase"
 
 export const useAuthStore = defineStore('authStore', {
     state: () => ({
@@ -10,6 +10,8 @@ export const useAuthStore = defineStore('authStore', {
         music: null,
         sport: null,
         handMade: null,
+        pageDetail: null,
+        pageImageList: [],
     }),
     actions: {
         async getInformation() {
@@ -56,6 +58,29 @@ export const useAuthStore = defineStore('authStore', {
             try {
                 const resultList = await pbGetItem(COLLECTION.HAND_MAKE);
                 this.handMade = resultList;
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async getPageDetail(slug) {
+            try {
+                this.pageDetail = null;
+                const resultList = await pbGetItem(COLLECTION.PAGES, {filter: `slug="${slug}"`});
+                this.pageDetail = resultList || null;
+                console.log(this.pageDetail)
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async getPageImageList(arr) {
+            try {
+                this.pageImageList = [];
+                let filter = '';
+                for(let i = 0; i < arr.length; i++) {
+                    filter = filter + (i > 0 ? '||' : '') + `id="${arr[i]}"`
+                }
+                const resultList = await pbGetFullList(COLLECTION.IMAGE_LIBRARY, {filter});
+                this.pageImageList = resultList || [];
             } catch (error) {
                 console.log(error);
             }

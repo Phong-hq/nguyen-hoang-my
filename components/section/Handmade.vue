@@ -6,7 +6,7 @@
             <!-- <p>option 1</p> -->
 
             <div class="grid grid-cols-2 gap-7">
-                <div class="col-span-1 overflow-hidden">
+                <div class="col-span-1 overflow-hidden max-h-[506px]">
                     <!-- <video class="sc-full aspect-square border-1" height="300px" autoplay muted loop id="vid" style="border: solid 1px #000;">
                         <source src="../../assets/video/mov_bbb.mp4" type="video/mp4">
                         Your browser does not support HTML video.
@@ -152,7 +152,7 @@
     </section>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Zoom, Navigation, Pagination, Autoplay } from 'swiper/modules';
