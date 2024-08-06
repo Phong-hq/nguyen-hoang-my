@@ -31,7 +31,7 @@ const idActive = ref('about-me-section');
 const documentHeight = ref(0);
 const state = computed<{id: string, top: number}[]>(() =>{
     const section = document?.querySelectorAll('.section-element');
-    let result = [];
+    let result = [] as any;
     section?.forEach((e: any) => {
         const item = navList.value.find((menu) => e.id == menu.id);
         const obj = {
@@ -46,15 +46,6 @@ const state = computed<{id: string, top: number}[]>(() =>{
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
     return result;
 });
-// const state = ref<{id: string, top: number}[]>([]);
-// const navList = ref([
-//     {label: 'Home', id: 'home-section'},
-//     {label: 'My itinerary', id: 'my-itinerary-section'},
-//     {label: 'Play chess', id: 'play-chess-section'},
-//     {label: 'Music', id: 'music-section'},
-//     {label: 'Sport', id: 'sport-section'},
-//     {label: 'Handmade', id: 'handmade-section'},
-// ])
 
 const navList = computed(() => {
     const a = {label: 'Home', id: 'home-section'};
@@ -74,13 +65,10 @@ const navList = computed(() => {
 
 onMounted(async () => {
   await router.isReady();
-    // getOffsetTop();
   goToSection(idActive.value);
-//   window.addEventListener('resize', setViewportProperty());
   window.addEventListener('scroll', handelScroll)
 });
 onUnmounted(() => {
-//   window.removeEventListener('resize', setViewportProperty());
   window.removeEventListener('scroll', handelScroll);
 })
 
@@ -107,25 +95,6 @@ const goToSection = (a: string) => {
         }
     }
 }
-// const getOffsetTop = () => {
-//     const section = document?.querySelectorAll('.section-element');
-//     section?.forEach((e: any) => {
-//         const item = navList.value.find((menu) => e.id == menu.id);
-//         const index = state.value.findIndex((a) => a.id == item?.id);
-//         const obj = {
-//             id: item?.id || '',
-//             top: Number(e.offsetTop)
-//         }
-//         if(index == -1) state.value.push(obj);
-//         else state.value[index] = obj;
-//         // if(item?.hidden) {
-//         // }
-//     })
-//     const body = document.body;
-//     const html = document.documentElement;
-//     documentHeight.value = Math.max( body?.scrollHeight || 0 , body?.offsetHeight || 0 , 
-//                        html.clientHeight, html.scrollHeight, html.offsetHeight );
-// }
 
 const handleNavClick = (item: any) => {
     if(route.name != 'index') {
@@ -136,8 +105,4 @@ const handleNavClick = (item: any) => {
     } else  goToSection(item.id);
 }
 
-// getOffsetTop();
-
 </script>
-
-<!-- <style ></style> -->

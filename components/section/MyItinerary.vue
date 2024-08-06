@@ -27,66 +27,6 @@
                             <file-component class="!h-[500px]" :url="item" :collection="COLLECTION.ITINERARY" :id="itinerary?.id"/>
                         </div> 
                     </swiper-slide>
-                    <!-- <swiper-slide>
-                        <div class="swiper-zoom-container object-cover bg-white">
-                            <img class="h-[500px] w-full" src="../../assets/images/my-itinerary/2.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="swiper-zoom-container object-cover bg-white">
-                            <img class="h-[500px] w-full" src="../../assets/images/my-itinerary/3.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="swiper-zoom-container object-cover bg-white">
-                            <img class="h-[500px] w-full" src="../../assets/images/my-itinerary/4.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="swiper-zoom-container object-cover bg-white">
-                            <img class="h-[500px] w-full" src="../../assets/images/my-itinerary/5.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="swiper-zoom-container object-cover bg-white">
-                            <img class="h-[500px] w-full" src="../../assets/images/my-itinerary/6.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="swiper-zoom-container object-cover bg-white">
-                            <img class="h-[500px] w-full" src="../../assets/images/my-itinerary/7.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="swiper-zoom-container object-cover bg-white">
-                            <img class="h-[500px] w-full" src="../../assets/images/my-itinerary/8.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="swiper-zoom-container object-cover bg-white">
-                            <img class="h-[500px] w-full" src="../../assets/images/my-itinerary/9.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="swiper-zoom-container object-cover bg-white">
-                            <img class="h-[500px] w-full" src="../../assets/images/my-itinerary/10.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="swiper-zoom-container object-cover bg-white">
-                            <img class="h-[500px] w-full" src="../../assets/images/my-itinerary/11.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="swiper-zoom-container object-cover bg-white">
-                            <img class="h-[500px] w-full" src="../../assets/images/my-itinerary/12.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="swiper-zoom-container object-cover bg-white">
-                            <img class="h-[500px] w-full" src="../../assets/images/my-itinerary/13.jpg" />
-                        </div> 
-                    </swiper-slide> -->
                 </swiper>
             </div>
         </div>

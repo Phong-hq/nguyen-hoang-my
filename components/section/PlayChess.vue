@@ -10,8 +10,6 @@
                 <file-component :url="chess?.list_image?.length ? chess?.list_image[item-1] : ''" :collection="COLLECTION.CHESS" :id="chess?.id" />
             </div>
         </div>
-        <!-- <div class="w-full flex justify-end">
-        </div> -->
         <see-more-btn url="chess" />
     </section>
 </template>

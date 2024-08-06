@@ -23,9 +23,6 @@
 
 <script lang="ts" setup>
 
-const getImageUrl = (name: string | number) => {
-    return new URL(`../assets/images/play-chess/${name}.jpg`, import.meta.url).href ;
-}
 </script>
 
 <style lang="scss">

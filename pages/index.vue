@@ -1,8 +1,6 @@
 <template>
   <div class="pb-[0px]">
-    <!-- <layout-header/> -->
     <lazy-section-banner class="section-element" id="home-section" v-show="information"/>
-    <!-- <lazy-about-me class="section-element" id="about-me-section" /> -->
     <lazy-section-my-itinerary class="section-element"id="my-itinerary-section" v-if="itinerary"/>
     <lazy-section-play-chess class="section-element" id="play-chess-section" v-if="chess"/>
     <lazy-section-music class="section-element" id="music-section" v-if="music"/>

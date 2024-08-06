@@ -7,17 +7,8 @@
 
             <div class="grid grid-cols-2 gap-7">
                 <div class="col-span-1 overflow-hidden max-h-[506px]">
-                    <!-- <video class="sc-full aspect-square border-1" height="300px" autoplay muted loop id="vid" style="border: solid 1px #000;">
-                        <source src="../../assets/video/mov_bbb.mp4" type="video/mp4">
-                        Your browser does not support HTML video.
-                    </video> -->
                     <file-component class="w-full !h-full" :url="handMade?.video" type="video" :collection="COLLECTION.HAND_MAKE" :id="handMade?.id"/>
                 </div>
-                <!-- <div class="grid grid-cols-3 gap-4">
-                    <div class="aspect-square" v-for="item in 8" :key="item">
-                        <empty-image />
-                    </div>
-                </div> -->
                 <div class="" v-if="imageLength">
                     <swiper
                         :style="{
@@ -52,7 +43,7 @@
                 </div>
             </div>
             <!-- <p>option 2</p> -->
-            <div class="grid grid-cols-3 gap-7 mt-7 !hidden ">
+            <!-- <div class="grid grid-cols-3 gap-7 mt-7 !hidden ">
                 <div class="col-span-1">
                     <video class="sc-full aspect-[3_/_3] border-1" height="300px" autoplay muted loop id="vid" style="border: solid 1px #000;">
                         <source src="../../assets/video/mov_bbb.mp4" type="video/mp4">
@@ -89,64 +80,6 @@
                         </swiper-slide>
                     </swiper>
                 </div>
-            </div>
-            <!-- <div class="">
-                <swiper
-                    :style="{
-                        '--swiper-navigation-color': '#fff',
-                        '--swiper-pagination-color': '#fff',
-                    }"
-                    :autoplay="{
-                        delay: 2500,
-                        disableOnInteraction: false,
-                    }"
-                    :slidesPerView="4"
-                    :spaceBetween="24"
-                    :zoom="true"
-                    :navigation="true"
-                    :pagination="{
-                        clickable: true,
-                    }"
-            
-                    :modules="modules"
-                    class="mySwiper"
-                >
-                    <swiper-slide>
-                        <div class=" ">
-                            <img class="h-[420px] w-full" src="../assets/images/handmade/6.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class=" ">
-                            <img class="h-[420px] w-full" src="../assets/images/handmade/5.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class=" ">
-                            <img class="h-[420px] w-full" src="../assets/images/handmade/4.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class=" ">
-                            <img class="h-[420px] w-full" src="../assets/images/handmade/1.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class=" ">
-                            <img class="h-[420px] w-full" src="../assets/images/handmade/2.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class=" ">
-                            <img class="h-[420px] w-full" src="../assets/images/handmade/3.jpg" />
-                        </div> 
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class=" ">
-                            <img class="h-[420px] w-full" src="../assets/images/handmade/7.jpg" />
-                        </div> 
-                    </swiper-slide>
-                </swiper>
             </div> -->
         </div>
     </section>

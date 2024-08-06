@@ -3,17 +3,6 @@
         <div class="w-full grid grid-cols-[30%_70%] h-[400px] relative">
             <file-component class="!h-[400px]" :url="information?.banner" :collection="COLLECTION.INFO" :id="information?.id"/>
             <file-component class="w-full !h-[400px]" :url="information?.introduce_video" type="video" :collection="COLLECTION.INFO" :id="information?.id"/>
-            <!-- <empty-image />
-            <video class="w-full h-[400px]" height="300px" autoplay muted loop id="vid" style="border: solid 1px #000;">
-                <source src="../../assets/video/mov_bbb.mp4" type="video/mp4">
-                Your browser does not support HTML video.
-            </video> -->
-            <!-- <div class="banner">
-                <div class="sc-full flex-center flex-col font-bold px-7">
-                    <p class="text-[100px] text-white leading-[160px] tracking-[-3px]">Hoang My</p>
-                    <div class="w-[700px] h-[1px] bg-white"></div>
-                </div>
-            </div> -->
             <div class="w-full h-[100px] bg-[#ffffff27] backdrop-blur-[133px] absolute bottom-0 left-0">
                 <div class="container h-full grid grid-cols-4 mx-auto text-[18px]">
                     <div class="flex flex-col pt-5">
@@ -57,9 +46,4 @@ const DEFAULT_VALUE = '----------------------------------------'
 onMounted(() => {
 })
 </script>
-
-<style lang="scss" scoped>
-.banner{
-}
-</style>
 
