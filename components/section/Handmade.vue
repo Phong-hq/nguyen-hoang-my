@@ -6,8 +6,8 @@
             <!-- <p>option 1</p> -->
 
             <div class="grid grid-cols-2 gap-7">
-                <div class="col-span-1 overflow-hidden max-h-[506px]">
-                    <file-component class="w-full !h-full" :url="handMade?.video" type="video" :collection="COLLECTION.HAND_MAKE" :id="handMade?.id"/>
+                <div class="relative">
+                    <file-component class="absolute inset-0 w-full !h-full" :url="handMade?.video" muted type="video" :collection="COLLECTION.HAND_MAKE" :id="handMade?.id"/>
                 </div>
                 <div class="" v-if="imageLength">
                     <swiper

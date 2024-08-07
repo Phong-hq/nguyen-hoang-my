@@ -2,13 +2,15 @@
     <section class="container mx-auto">
         <p class="heading-1">Play chess</p>
         <p class="heading-2">{{ chess?.description || '' }}</p>
-        <div class="grid grid-cols-4 gap-7">
-            <div class="row-span-2 col-span-2">
-                <file-component class="!h-full" :url="chess?.main_image" :collection="COLLECTION.CHESS" :id="chess?.id" />
+        <div class="flex gap-7">
+            <div class="w-1/2 relative">
+                <file-component class="absolute inset-0 sc-full" :url="chess?.main_image" :collection="COLLECTION.CHESS" :id="chess?.id" />
             </div>
+        <div class="w-1/2 grid grid-cols-2 gap-7">
             <div class="aspect-[3_/_2]" v-for="item in 4" :key="item">
-                <file-component :url="chess?.list_image?.length ? chess?.list_image[item-1] : ''" :collection="COLLECTION.CHESS" :id="chess?.id" />
+                <file-component class="max-h-full" :url="chess?.list_image?.length ? chess?.list_image[item-1] : ''" :collection="COLLECTION.CHESS" :id="chess?.id" />
             </div>
+        </div>
         </div>
         <see-more-btn url="chess" />
     </section>
