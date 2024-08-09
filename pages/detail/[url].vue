@@ -9,12 +9,12 @@
 </div>
 <div class="container mx-auto py-[70px]">
   <div class="grid grid-cols-3 gap-7">
-    <div v-for="item in 12" :key="item" v-if="!pageImageList?.length">
+    <div v-for="item in 12" :key="item" v-if="!pageDetail?.field">
       <div class="aspect-[3_/_2]">
         <empty-image />
       </div>
     </div>
-    <div v-for="(item, index) in pageDetail.field" :key="index" v-else>
+    <div v-for="(item, index) in pageDetail?.field" :key="index" v-else>
       <div class="aspect-[3_/_2]">
         <file-component 
         :class="{'rounded-[50px]': getImageItem(item)?.border == 'rounded'}"

@@ -62,7 +62,6 @@ const navList = computed(() => {
     if(music.value) result.push(d);
     if(sport.value) result.push(e);
     if(handMade.value) result.push(f);
-    console.log(result);
     try {
         setTimeout(() => {
             getDocumentHeight();
@@ -90,7 +89,6 @@ const getDocumentHeight = () => {
     const html = document.documentElement;
     documentHeight.value = Math.max( body?.scrollHeight || 0 , body?.offsetHeight || 0 , 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
-                       console.log(documentHeight.value, 'documentHeight.value');
                        
 }
 
