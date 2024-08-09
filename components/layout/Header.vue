@@ -29,23 +29,25 @@ const router = useRouter();
 const route = useRoute();
 const idActive = ref('about-me-section');
 const documentHeight = ref(0);
-const state = computed<{id: string, top: number}[]>(() =>{
-    const section = document?.querySelectorAll('.section-element');
-    let result = [] as any;
-    section?.forEach((e: any) => {
-        const item = navList.value.find((menu) => e.id == menu.id);
-        const obj = {
-            id: item?.id || '',
-            top: Number(e.offsetTop)
-        }
-        result.push(obj)
-    })
-    const body = document.body;
-    const html = document.documentElement;
-    documentHeight.value = Math.max( body?.scrollHeight || 0 , body?.offsetHeight || 0 , 
-                       html.clientHeight, html.scrollHeight, html.offsetHeight );
-    return result;
-});
+const state = ref<any>([])
+// const state = computed(() =>{
+//     const section = document?.querySelectorAll('.section-element');
+//     let result = [] as any;
+//     section?.forEach((e: any) => {
+//         const item = navList.value.find((menu) => e.id == menu.id);
+//         const obj = {
+//             id: item?.id || '',
+//             top: Number(e.offsetTop)
+//         }
+//         result.push(obj)
+//     })
+//     const body = document.body;
+//     const html = document.documentElement;
+//     console.log('oooo', result);
+    
+//     getDocumentHeight();
+//     return result;
+// });
 
 const navList = computed(() => {
     const a = {label: 'Home', id: 'home-section'};
@@ -60,17 +62,50 @@ const navList = computed(() => {
     if(music.value) result.push(d);
     if(sport.value) result.push(e);
     if(handMade.value) result.push(f);
+    console.log(result);
+    try {
+        setTimeout(() => {
+            getDocumentHeight();
+            getState();
+        }, 500);
+    } catch (error) {}
     return result;
 })
 
 onMounted(async () => {
   await router.isReady();
   goToSection(idActive.value);
-  window.addEventListener('scroll', handelScroll)
+  window.addEventListener('scroll', handelScroll);
+  window.addEventListener('resize', getDocumentHeight);
+  window.addEventListener('resize', getState);
 });
 onUnmounted(() => {
   window.removeEventListener('scroll', handelScroll);
+  window.removeEventListener('resize', getDocumentHeight);
+  window.removeEventListener('resize', getState);
 })
+
+const getDocumentHeight = () => {
+    const body = document.body;
+    const html = document.documentElement;
+    documentHeight.value = Math.max( body?.scrollHeight || 0 , body?.offsetHeight || 0 , 
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+                       console.log(documentHeight.value, 'documentHeight.value');
+                       
+}
+
+const getState = () => {
+    const section = document?.querySelectorAll('.section-element');
+    state.value = [];
+    section?.forEach((e: any) => {
+        const item = navList.value.find((menu) => e.id == menu.id);
+        const obj = {
+            id: item?.id || '',
+            top: Number(e.offsetTop)
+        }
+        state.value.push(obj)
+    })
+}
 
 const handelScroll = (e: any) => {
     const top = window?.top?.scrollY || 0;
@@ -88,7 +123,7 @@ const goToSection = (a: string) => {
         if (idActive.value === 'home-section') {
             window.scrollTo({top: 0, behavior: 'smooth'})
         } else if(idActive.value === 'my-itinerary-section') {
-            window.scrollTo({top: top - 290, behavior: 'smooth'})
+            window.scrollTo({top: top - 370, behavior: 'smooth'})
         }
         else if (idActive.value !== 'home-section') {
             window.scrollTo({top: top - 90, behavior: 'smooth'})

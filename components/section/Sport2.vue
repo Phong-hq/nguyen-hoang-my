@@ -19,11 +19,15 @@
 <script setup>
 import { useAuthStore } from '~/store/auth';
 import { storeToRefs } from 'pinia';
-import  {COLLECTION} from "@/pocketbase";
+import { COLLECTION } from "@/pocketbase";
 
 const authStore = useAuthStore();
 
 const { sport } = storeToRefs(authStore);
+
+const getSport = (id) => {
+    sport.filter(item => item.id == id)
+}
 </script>
 
 <style lang="scss">

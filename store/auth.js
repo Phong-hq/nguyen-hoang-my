@@ -67,7 +67,6 @@ export const useAuthStore = defineStore('authStore', {
                 this.pageDetail = null;
                 const resultList = await pbGetItem(COLLECTION.PAGES, {filter: `slug="${slug}"`});
                 this.pageDetail = resultList || null;
-                console.log(this.pageDetail)
             } catch (error) {
                 console.log(error);
             }

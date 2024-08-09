@@ -14,17 +14,21 @@
         <empty-image />
       </div>
     </div>
-    <div v-for="(item, index) in pageImageList" :key="index" v-else>
+    <div v-for="(item, index) in pageDetail.field" :key="index" v-else>
       <div class="aspect-[3_/_2]">
-        <file-component :url="item.image" :collection="COLLECTION.IMAGE_LIBRARY" :id="item.id" />
-        <p class="mt-2">{{ item.note }}</p>
+        <file-component 
+        :class="{'rounded-[50px]': getImageItem(item)?.border == 'rounded'}"
+        :url="getImageItem(item)?.image || ''" 
+        :collection="COLLECTION.IMAGE_LIBRARY" 
+        :id="getImageItem(item)?.id" />
+        <p class="mt-2">{{ getImageItem(item)?.note }}</p>
       </div>
     </div>
   </div>
 </div>
 </template>
   
-<script lang="ts" setup>
+<script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useAuthStore } from '~/store/auth';
@@ -39,7 +43,6 @@ const { pageDetail, pageImageList } = storeToRefs(authStore);
   onMounted( async () => {
     try {
       if(route.params.url) {
-        
         await authStore.getPageDetail(String(route.params.url));
         if(pageDetail.value?.field.length) {
           await authStore.getPageImageList(pageDetail.value?.field);
@@ -49,6 +52,10 @@ const { pageDetail, pageImageList } = storeToRefs(authStore);
       
     }
   })
+
+  const getImageItem = (id) => {
+    return pageImageList.value?.find((image) => image.id == id)
+  }
   const lazyLoad = ref(false);
 </script>
   

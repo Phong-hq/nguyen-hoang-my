@@ -115,6 +115,7 @@ const imageUrl = (index1, index2) => {
     if(!handMade.value) return '';
     return handMade.value?.image[(index1-1) * 3 + index2] || ''
 }
+
 </script>
 
 <style lang="scss">
