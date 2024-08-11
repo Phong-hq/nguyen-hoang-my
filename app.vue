@@ -19,7 +19,7 @@ onMounted(async () => {
     authStore.getChessInfo();
     authStore.getMusicInfo();
     authStore.getSportInfo();
-    authStore.gethandMadeInfo();
+    authStore.getAllSections();
     await authStore.getInformation();
   } catch (error) {
     console.log(error);

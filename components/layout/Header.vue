@@ -4,7 +4,7 @@
             <div></div>
             <div class="flex items-center justify-end">
                 <div 
-                    class="pl-[60px] font-semibold text-right duration-[0.4s] hover:text-primary cursor-pointer tracking-[-1px]" 
+                    class="pl-[60px] font-semibold text-right duration-[0.4s] hover:text-primary cursor-pointer tracking-[-1px] capitalize" 
                     :class="{ '!text-primary': idActive == item.id }"
                     v-for="(item, index) in navList" 
                     :key="index"
@@ -24,30 +24,12 @@ import { useAuthStore } from '~/store/auth';
 
 const authStore = useAuthStore();
 
-const { information, itinerary, chess, music, sport, handMade } = storeToRefs(authStore)
+const { information, itinerary, chess, music, sport, handMade, sections } = storeToRefs(authStore)
 const router = useRouter();
 const route = useRoute();
 const idActive = ref('about-me-section');
 const documentHeight = ref(0);
 const state = ref<any>([])
-// const state = computed(() =>{
-//     const section = document?.querySelectorAll('.section-element');
-//     let result = [] as any;
-//     section?.forEach((e: any) => {
-//         const item = navList.value.find((menu) => e.id == menu.id);
-//         const obj = {
-//             id: item?.id || '',
-//             top: Number(e.offsetTop)
-//         }
-//         result.push(obj)
-//     })
-//     const body = document.body;
-//     const html = document.documentElement;
-//     console.log('oooo', result);
-    
-//     getDocumentHeight();
-//     return result;
-// });
 
 const navList = computed(() => {
     const a = {label: 'Home', id: 'home-section'};
@@ -62,6 +44,11 @@ const navList = computed(() => {
     if(music.value) result.push(d);
     if(sport.value) result.push(e);
     if(handMade.value) result.push(f);
+    if(sections.value?.length) {
+        for(let i = 0; i < sections.value?.length; i++) {
+            result.push({label: sections.value[i].name, id: `created-section-${sections.value[i].id}` });
+        }
+    }
     try {
         setTimeout(() => {
             getDocumentHeight();

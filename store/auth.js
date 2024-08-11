@@ -10,6 +10,7 @@ export const useAuthStore = defineStore('authStore', {
         music: null,
         sport: null,
         handMade: null,
+        sections: null,
         pageDetail: null,
         pageImageList: [],
     }),
@@ -58,6 +59,15 @@ export const useAuthStore = defineStore('authStore', {
             try {
                 const resultList = await pbGetItem(COLLECTION.HAND_MAKE);
                 this.handMade = resultList;
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async getAllSections() {
+            try {
+                const resultList = await pbGetFullList(COLLECTION.SECTIONS);
+                this.sections = resultList;
+                console.log(this.sections);
             } catch (error) {
                 console.log(error);
             }

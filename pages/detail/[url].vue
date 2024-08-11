@@ -17,6 +17,7 @@
     <div v-for="(item, index) in pageDetail?.field" :key="index" v-else>
       <div class="aspect-[3_/_2]">
         <file-component 
+        type="img-full"
         :class="{'rounded-[50px]': getImageItem(item)?.border == 'rounded'}"
         :url="getImageItem(item)?.image || ''" 
         :collection="COLLECTION.IMAGE_LIBRARY" 

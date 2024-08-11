@@ -5,7 +5,16 @@
     <lazy-section-play-chess class="section-element" id="play-chess-section" v-if="chess"/>
     <lazy-section-music class="section-element" id="music-section" v-if="music"/>
     <lazy-section-sport2 class="section-element" id="sport-section" v-if="sport"/>
-    <lazy-section-handmade class="section-element" id="handmade-section" v-if="handMade"/>
+    <!-- <lazy-section-handmade class="section-element" id="handmade-section" v-if="handMade"/> -->
+     <template  v-for="(item, index) in sections" :key="item.id">
+       <lazy-section-created 
+        class="section-element" 
+        :id="`created-section-${item.id}`" 
+        :data="item"
+        :index="index"
+        v-if="item"
+       />
+     </template>
   </div>
 </template>
   
@@ -16,6 +25,6 @@
   
   const authStore = useAuthStore();
 
-  const { information, itinerary, chess, music, sport, handMade } = storeToRefs(authStore)
+  const { information, itinerary, chess, music, sport, handMade, sections } = storeToRefs(authStore)
 </script>
   

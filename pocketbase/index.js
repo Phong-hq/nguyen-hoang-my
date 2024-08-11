@@ -41,7 +41,8 @@ export const COLLECTION = {
     SPORT: 'sport',
     HAND_MAKE: 'hand_made',
     PAGES: 'pages',
-    IMAGE_LIBRARY: 'image_library'
+    IMAGE_LIBRARY: 'image_library',
+    SECTIONS: 'sections'
 }
 
 export default pb;
