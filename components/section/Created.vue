@@ -1,7 +1,7 @@
 <template>
     <section :class="{'bg-dark1': index % 2 == 0}">
         <div class="container mx-auto">
-            <p class="heading-1">Handmade</p>
+            <p class="heading-1 capitalize">{{ data.name }}</p>
             <p class="heading-2">{{ data?.description || '' }}</p>
             <div class="grid grid-cols-4 gap-7">
                 <div class=""       
