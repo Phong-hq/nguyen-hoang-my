@@ -15,7 +15,7 @@ body {
     font-weight: 600;
     padding: 42px 0;
     text-align: left;
-    letter-spacing: -3px;
+    // letter-spacing: -3px;
     position: relative;
     margin: 0 auto;
     &::after{
@@ -29,9 +29,9 @@ body {
     }
 }
 .heading-2{
-    font-size: 16px;
+    font-size: 20px;
     color: #242424;
-    font-weight: 400;
+    font-weight: 500;
     text-align: left;
     // letter-spacing: -3px;
     // position: relative;

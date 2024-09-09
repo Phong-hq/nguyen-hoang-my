@@ -4,20 +4,22 @@
             <p class="heading-1 capitalize">{{ data.name }}</p>
             <p class="heading-2">{{ data?.description || '' }}</p>
             <div class="grid grid-cols-4 gap-7">
-                <div class=""       
-                    v-for="(img, i) in data.content" 
-                    :key="i"
-                >
-                    <file-component 
-                        :url="img" 
-                        :collection="COLLECTION.SECTIONS" 
-                        :id="data?.id" 
-                        controls
-                        type="img-full"
-                    />
-                </div>
+                <template v-for="(img, i) in data.content" :key="i">
+                    <div class="" v-if="i < 8" >
+                        <file-component 
+                            :url="img" 
+                            :collection="COLLECTION.SECTIONS" 
+                            :id="data?.id" 
+                            controls
+                            type="img-full"
+                            autoplay="false"
+                        />
+                    </div>
+                </template>
             </div>
+            <see-more-btn :data="data" />
         </div>
+
     </section>
 </template>
 

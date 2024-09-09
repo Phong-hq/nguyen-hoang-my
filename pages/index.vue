@@ -9,7 +9,7 @@
      <template  v-for="(item, index) in sections" :key="item.id">
        <lazy-section-created 
         class="section-element" 
-        :id="`created-section-${item.id}`" 
+        :id="`created-section-${item?.id}`" 
         :data="item"
         :index="index"
         v-if="item"
@@ -18,7 +18,7 @@
   </div>
 </template>
   
-<script lang="ts" setup>
+<script setup>
   import { ref } from 'vue';
   import { useAuthStore } from '~/store/auth';
   import { storeToRefs } from 'pinia';

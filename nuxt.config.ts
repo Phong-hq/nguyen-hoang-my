@@ -1,14 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-swiper', "@pinia/nuxt"],
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-swiper', "@pinia/nuxt", "@ant-design-vue/nuxt"],
   css: [
     '@/assets/style/tailwind.scss',
     '@/assets/style/index.scss',
   ],
+  // plugins: [
+  //   '~/plugins/antd-ui.js'
+  // ],
   postcss: {
     plugins: {
       tailwindcss: {},
+      
     },
   },
   app: {

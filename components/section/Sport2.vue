@@ -12,7 +12,13 @@
                 </div>
             </div>
         </div>
-        <see-more-btn url="sport"/>
+        <div class="w-full grid grid-cols-4 gap-7 mt-7">
+        <div class="aspect-[3_/_2]" v-for="item in 4" :key="item">
+            <file-component class="max-h-full" :url="sport?.list_image?.length ? sport?.list_image[item + 3] : ''" :collection="COLLECTION.SPORT" :id="sport?.id" />
+        </div>
+    </div>
+        <!-- <see-more-btn url="sport"/> -->
+        <see-more-btn :data="sport"/>
     </section>
 </template>
 

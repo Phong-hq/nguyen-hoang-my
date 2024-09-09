@@ -88,17 +88,17 @@
 <script setup>
 import { ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Zoom, Navigation, Pagination, Autoplay } from 'swiper/modules';
+// import { Zoom, Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { useAuthStore } from '~/store/auth';
 import { storeToRefs } from 'pinia';
 import  {COLLECTION} from "@/pocketbase";
 
 // Import Swiper styles
-import 'swiper/css';
+// import 'swiper/css';
 
-import 'swiper/css/zoom';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+// import 'swiper/css/zoom';
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
 
 const authStore = useAuthStore();
 

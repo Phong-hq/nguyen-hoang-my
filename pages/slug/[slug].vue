@@ -18,11 +18,12 @@
       <div class="aspect-[3_/_2]">
         <file-component 
         type="img-full"
-        :class="{'rounded-[50px]': getImageItem(item)?.border == 'rounded'}"
-        :url="getImageItem(item)?.image || ''" 
-        :collection="COLLECTION.IMAGE_LIBRARY" 
-        :id="getImageItem(item)?.id" />
-        <p class="mt-2">{{ getImageItem(item)?.note }}</p>
+        :class="{'rounded-[50px]': false}"
+        :url="item || ''" 
+        :collection="collection" 
+        controls
+        :id="id" />
+        <!-- <p class="mt-2">{{ getImageItem(item)?.note }}</p> -->
       </div>
     </div>
   </div>
@@ -45,29 +46,36 @@ import  {COLLECTION} from "@/pocketbase";
   const listImage = computed(() => data.value?.content || data.value?.list_image || [])
 
   const data = ref(null);
+  const collection = ref('');
+  const id = ref('');
   onMounted( async () => {
     try {
-      console.log('ppppppppppp');
-      
       data.value = null;
-      const url = String(route.params.url)
+      const url = String(route.params.slug)
       if(url) {
         if(sport.value?.slug == url) {
           data.value = sport.value
+          id.value = sport.value?.id
+          collection.value = COLLECTION.SPORT
         }
 
         else if(chess.value?.slug == url) {
           data.value = chess.value
+          collection.value = COLLECTION.CHESS
+          id.value = chess.value?.id
+
         }
 
         else {
-          // data.value = sections.value?.find((e) => e.slug == url) || null
+          data.value = sections.value?.find((e) => e.slug == url) || null
+          collection.value = COLLECTION.SECTIONS
+          id.value = data.value?.id
         }
         
       }
-      console.log(url,'ssssssssssssssss');
-      console.log(chess,'ssssssssssssssss');
-      console.log(data.value,'ssssssssssssssss');
+      console.log(id.value,'ssssssssssssssss');
+      console.log(collection.value,'ssssssssssssssss');
+      console.log(listImage.value,'ssssssssssssssss');
     } catch (error) {
       console.log(error);
       
