@@ -8,7 +8,7 @@
   </div>
 </div>
 <div class="container mx-auto py-[70px]">
-  <div class="grid grid-cols-3 gap-7">
+  <div class="grid  grid-cols-1 md:grid-cols-3 gap-7">
     <div v-for="item in 12" :key="item" v-if="!listImage">
       <div class="aspect-[3_/_2]">
         <empty-image />
@@ -73,9 +73,6 @@ import  {COLLECTION} from "@/pocketbase";
         }
         
       }
-      console.log(id.value,'ssssssssssssssss');
-      console.log(collection.value,'ssssssssssssssss');
-      console.log(listImage.value,'ssssssssssssssss');
     } catch (error) {
       console.log(error);
       

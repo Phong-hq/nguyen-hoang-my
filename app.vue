@@ -20,6 +20,7 @@ onMounted(async () => {
     authStore.getMusicInfo();
     authStore.getSportInfo();
     authStore.getAllSections();
+    authStore.getCommunity();
     await authStore.getInformation();
   } catch (error) {
     console.log(error);

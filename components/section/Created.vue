@@ -3,7 +3,7 @@
         <div class="container mx-auto">
             <p class="heading-1 capitalize">{{ data.name }}</p>
             <p class="heading-2">{{ data?.description || '' }}</p>
-            <div class="grid grid-cols-4 gap-7">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 mt-7">
                 <template v-for="(img, i) in data.content" :key="i">
                     <div class="" v-if="i < 8" >
                         <file-component 

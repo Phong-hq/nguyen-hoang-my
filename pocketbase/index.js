@@ -42,7 +42,8 @@ export const COLLECTION = {
     HAND_MAKE: 'hand_made',
     PAGES: 'pages',
     IMAGE_LIBRARY: 'image_library',
-    SECTIONS: 'sections'
+    SECTIONS: 'sections',
+    COMMUNITY: 'community'
 }
 
 export default pb;

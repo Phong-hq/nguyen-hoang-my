@@ -6,7 +6,7 @@
     </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 
 const router = useRouter();
 

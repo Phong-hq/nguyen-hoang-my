@@ -1,6 +1,6 @@
 <template>
     <header class="sticky top-0 left-0 w-full h-[90px] bg-white z-10">
-        <div class="w-full flex justify-between  sc-full container  mx-auto">
+        <div class="w-full hidden md:flex justify-between  sc-full container  mx-auto ">
             <div></div>
             <div class="flex items-center justify-end">
                 <div 
@@ -14,17 +14,48 @@
                 </div>
             </div>
         </div>
+        <div class="sc-full flex md:hidden justify-between items-center container  mx-auto px-5">
+            <p class="text-[48px] font-bold"></p>
+            <MenuOutlined class="text-[36px] cursor-pointer" @click="showMenu" />
+            <a-drawer
+                v-model:open="open"
+                class="custom-class"
+                root-class-name="root-class-name"
+                :headerStyle="{'display': 'none'}"
+                placement="right"
+                width="300"
+            >
+                <div>
+                    <ul class="flex flex-col gap-7 w-full text-right">
+                        <div class="flex justify-end">
+                            <CloseOutlined class="text-[36px] cursor-pointer" @click="showMenu" />
+                        </div>
+                        <li 
+                            class="text-[20px] font-semibold duration-[0.4s] hover:text-primary cursor-pointe"
+                            v-for="(item, index) in navList" 
+                            :key="index"
+                            @click="handleNavClick(item)"
+
+                            >
+                                {{ item.label }}
+                        </li>
+                    </ul>
+                    
+                </div>
+            </a-drawer>
+        </div>
     </header>
 </template>
 
 <script lang="ts" setup>
 import {ref} from 'vue';
 import { useAuthStore } from '~/store/auth';
-  import { storeToRefs } from 'pinia';
+import { storeToRefs } from 'pinia';
 
+import { MenuOutlined, CloseOutlined } from '@ant-design/icons-vue';
 const authStore = useAuthStore();
 
-const { information, itinerary, chess, music, sport, handMade, sections } = storeToRefs(authStore)
+const { information, itinerary, chess, music, sport, handMade, sections, community } = storeToRefs(authStore)
 const router = useRouter();
 const route = useRoute();
 const idActive = ref('about-me-section');
@@ -38,12 +69,14 @@ const navList = computed(() => {
     const d = {label: 'Music', id: 'music-section'};
     const e = {label: 'Sport', id: 'sport-section'};
     const f = {label: 'Handmade', id: 'handmade-section'};
+    const g = {label: 'Community', id: 'community-section'};
     let result = [a];
     if(itinerary.value) result.push(b);
     if(chess.value) result.push(c);
     if(music.value) result.push(d);
     if(sport.value) result.push(e);
     if(handMade.value) result.push(f);
+    if(community.value) result.push(g);
     if(sections.value?.length) {
         for(let i = 0; i < sections.value?.length; i++) {
             result.push({label: sections.value[i].name, id: `created-section-${sections.value[i].id}` });
@@ -70,6 +103,8 @@ onUnmounted(() => {
   window.removeEventListener('resize', getDocumentHeight);
   window.removeEventListener('resize', getState);
 })
+
+const open = ref<boolean>(false);
 
 const getDocumentHeight = () => {
     const body = document.body;
@@ -123,6 +158,16 @@ const handleNavClick = (item: any) => {
             goToSection(item.id);
         }, 500);
     } else  goToSection(item.id);
+    open.value = false;
 }
+
+
+const afterOpenChange = (bool: boolean) => {
+  console.log('open', bool);
+};
+
+const showMenu = () => {
+  open.value = true;
+};
 
 </script>

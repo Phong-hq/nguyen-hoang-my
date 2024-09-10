@@ -12,6 +12,7 @@ export const useAuthStore = defineStore('authStore', {
         handMade: null,
         sections: null,
         pageDetail: null,
+        community : null,
         pageImageList: [],
     }),
     actions: {
@@ -55,10 +56,18 @@ export const useAuthStore = defineStore('authStore', {
                 console.log(error);
             }
         },
-        async gethandMadeInfo() {
+        async getHandMadeInfo() {
             try {
                 const resultList = await pbGetItem(COLLECTION.HAND_MAKE);
                 this.handMade = resultList;
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async getCommunity() {
+            try {
+                const resultList = await pbGetItem(COLLECTION.COMMUNITY);
+                this.community = resultList;
             } catch (error) {
                 console.log(error);
             }
