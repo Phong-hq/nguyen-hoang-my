@@ -1,11 +1,11 @@
 <template>
   <div class="pb-[0px]">
     <lazy-section-banner class="section-element" id="home-section" v-show="information"/>
-    <lazy-section-my-itinerary class="section-element"id="my-itinerary-section" v-if="itinerary"  title="My itinerary"/>
+    <lazy-section-my-itinerary class="section-element"id="my-itinerary-section" :data="itinerary" :collection="COLLECTION.ITINERARY" :image-id="itinerary?.id" v-if="itinerary"  title="My itinerary"/>
     <lazy-section-play-chess class="section-element" id="play-chess-section" v-if="chess"/>
     <lazy-section-music class="section-element" id="music-section" v-if="music"/>
     <lazy-section-sport2 class="section-element" id="sport-section" v-if="sport"/>
-    <lazy-section-my-itinerary class="section-element" id="community-section" v-if="community" title="Community"/>
+    <lazy-section-my-itinerary class="section-element" id="community-section" :data="community" :collection="COLLECTION.COMMUNITY" :image-id="community?.id" v-if="community" title="Community"/>
     <!-- <lazy-section-handmade class="section-element" id="handmade-section" v-if="handMade"/> -->
      <template  v-for="(item, index) in sections" :key="item.id">
        <lazy-section-created 
@@ -23,6 +23,7 @@
   import { ref } from 'vue';
   import { useAuthStore } from '~/store/auth';
   import { storeToRefs } from 'pinia';
+import  {COLLECTION} from "@/pocketbase";
   
   const authStore = useAuthStore();
 

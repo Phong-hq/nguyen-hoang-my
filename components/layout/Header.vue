@@ -28,7 +28,7 @@
                 <div>
                     <ul class="flex flex-col gap-7 w-full text-right">
                         <div class="flex justify-end">
-                            <CloseOutlined class="text-[36px] cursor-pointer" @click="showMenu" />
+                            <CloseOutlined class="text-[36px] cursor-pointer" @click="open = false" />
                         </div>
                         <li 
                             class="text-[20px] font-semibold duration-[0.4s] hover:text-primary cursor-pointe"
