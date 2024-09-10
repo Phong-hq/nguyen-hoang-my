@@ -74,8 +74,6 @@ const props = defineProps({
         default: ''
     }
 })
-console.log(props.title);
-
 const authStore = useAuthStore();
 // const { itinerary } = storeToRefs(authStore);
 

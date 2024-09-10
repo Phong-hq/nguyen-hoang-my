@@ -65,7 +65,7 @@ const state = ref<any>([])
 const navList = computed(() => {
     const a = {label: 'Home', id: 'home-section'};
     const b = {label: 'My itinerary', id: 'my-itinerary-section'};
-    const c = {label: 'Play chess', id: 'play-chess-section'};
+    const c = {label: 'chess', id: 'play-chess-section'};
     const d = {label: 'Music', id: 'music-section'};
     const e = {label: 'Sport', id: 'sport-section'};
     const f = {label: 'Handmade', id: 'handmade-section'};

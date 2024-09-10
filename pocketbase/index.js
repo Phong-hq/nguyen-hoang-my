@@ -43,7 +43,8 @@ export const COLLECTION = {
     PAGES: 'pages',
     IMAGE_LIBRARY: 'image_library',
     SECTIONS: 'sections',
-    COMMUNITY: 'community'
+    COMMUNITY: 'community',
+    META: 'meta'
 }
 
 export default pb;

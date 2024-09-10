@@ -1,6 +1,6 @@
 <template>
     <section class="container mx-auto">
-        <p class="heading-1">Play chess</p>
+        <p class="heading-1">chess</p>
         <p class="heading-2">{{ chess?.description || '' }}</p>
         <div class="flex gap-7">
             <div class="w-full md:w-1/2 relative md:row-span-2">

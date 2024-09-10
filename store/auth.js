@@ -13,6 +13,7 @@ export const useAuthStore = defineStore('authStore', {
         sections: null,
         pageDetail: null,
         community : null,
+        meta : null,
         pageImageList: [],
     }),
     actions: {
@@ -71,6 +72,18 @@ export const useAuthStore = defineStore('authStore', {
             } catch (error) {
                 console.log(error);
             }
+        },
+        async getPageMeta() {
+            return new Promise( async(resolve, reject) => {          
+                try {
+                    const resultList = await pbGetItem(COLLECTION.META);
+                    if(resultList) resolve(resultList)
+                    reject(false)
+                } catch (error) {
+                    reject(error);
+                    console.log(error);
+                }
+            })
         },
         async getAllSections() {
             try {

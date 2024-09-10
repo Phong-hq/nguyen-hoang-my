@@ -12,7 +12,7 @@ const router = useRouter();
 
 const props = defineProps({
     data: {
-        type: String,
+        type: Object,
         default: {}
     }
 })
