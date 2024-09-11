@@ -60,6 +60,6 @@ const setMeta = async () => {
   })
 }
 
-setMeta()
+// setMeta()
 const lazyLoad = ref(false);
 </script>

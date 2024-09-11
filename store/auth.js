@@ -76,9 +76,16 @@ export const useAuthStore = defineStore('authStore', {
         async getPageMeta() {
             return new Promise( async(resolve, reject) => {          
                 try {
+                    if(this.meta != null) {
+                        resolve(this.meta)
+                        return;
+                    }
                     const resultList = await pbGetItem(COLLECTION.META);
-                    if(resultList) resolve(resultList)
-                    reject(false)
+                    if(resultList) {
+                        this.meta = resultList
+                        resolve(this.meta)
+                    }
+                    else reject(false)
                 } catch (error) {
                     reject(error);
                     console.log(error);
