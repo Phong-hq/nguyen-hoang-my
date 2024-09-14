@@ -33,6 +33,7 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { hid: 'description', name: 'description', content: "description" },
+        { hid: 'image', name: 'image', content: "/banner.jpg" },
         { hid: "og:title", name:"og:title", property: "og:title", content: "Nguyen Hoang My" },
         { hid: "apple-mobile-web-app-title", name: "apple-mobile-web-app-title", content: "Nguyen Hoang My" },
         { hid: "og:site_name", name: "og:site_name", property: "og:site_name", content: "description" },

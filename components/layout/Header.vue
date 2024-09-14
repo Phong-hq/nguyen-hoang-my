@@ -55,7 +55,8 @@ import { storeToRefs } from 'pinia';
 import { MenuOutlined, CloseOutlined } from '@ant-design/icons-vue';
 const authStore = useAuthStore();
 
-const { information, itinerary, chess, music, sport, handMade, sections, community } = storeToRefs(authStore)
+const { information, itinerary, chess, music, sport, handMade, community } = storeToRefs(authStore)
+const sections = computed<any>(() => authStore.sections)
 const router = useRouter();
 const route = useRoute();
 const idActive = ref('about-me-section');
@@ -107,10 +108,12 @@ onUnmounted(() => {
 const open = ref<boolean>(false);
 
 const getDocumentHeight = () => {
-    const body = document.body;
-    const html = document.documentElement;
-    documentHeight.value = Math.max( body?.scrollHeight || 0 , body?.offsetHeight || 0 , 
-                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+    const body = document?.body;
+    const html = document?.documentElement;
+    if(body && html) {
+        documentHeight.value = Math.max( body?.scrollHeight || 0 , body?.offsetHeight || 0 , 
+                           html.clientHeight, html.scrollHeight, html.offsetHeight );
+    }
                        
 }
 

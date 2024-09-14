@@ -1,9 +1,9 @@
 import { useAuthStore } from "~/store/auth";
+import { COLLECTION } from "~/pocketbase";
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
   const authStore = useAuthStore()
-  const data: any = await authStore.getPageMeta();
-  console.log('sdsd');
+  const data = await authStore.getPageMeta();
   
   useHead({
       title: data?.title,
