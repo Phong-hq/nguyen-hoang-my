@@ -20,10 +20,10 @@
                                     '--swiper-pagination-color': '#fff',
                                 }"
                                 :zoom="true"
-                                :navigation="false"
+                                :navigation="true"
                                 :pagination="false"
                                 :autoplay="{
-                                    delay: 2500,
+                                    delay: 10000,
                                     disableOnInteraction: false,
                                 }"
                                 :modules="modules"

@@ -4,6 +4,7 @@ import { COLLECTION } from "~/pocketbase";
 export default defineNuxtRouteMiddleware(async (to, from) => {
   const authStore = useAuthStore()
   const data = await authStore.getPageMeta();
+  console.log(data,'sssssssssss');
   
   useHead({
       title: data?.title,

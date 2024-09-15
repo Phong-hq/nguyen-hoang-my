@@ -47,7 +47,6 @@ import  {COLLECTION} from "@/pocketbase";
   const data = ref(null);
   onMounted( async () => {
     try {
-      console.log('ppppppppppp');
       
       data.value = null;
       const url = String(route.params.url)
@@ -65,9 +64,6 @@ import  {COLLECTION} from "@/pocketbase";
         }
         
       }
-      console.log(url,'ssssssssssssssss');
-      console.log(chess,'ssssssssssssssss');
-      console.log(data.value,'ssssssssssssssss');
     } catch (error) {
       console.log(error);
       
