@@ -17,7 +17,8 @@ const props = defineProps({
     }
 })
 const handleClick = () => {
-    router.push({path: '/slug/' + props.data?.slug})
+    // router.push({path: '/slug/' + props.data?.slug})
+    router.push({path: '/detail/' + props.data?.slug})
 }
 
 </script>

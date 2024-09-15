@@ -2,6 +2,7 @@
     <div class="flex-center sc-full bg-[#919191]" v-if="!url || !collection || !id">
         <!-- <img class="max-w-[200px] max-h-[200px] w-[50%] h-[50%]" src="../assets/images/empty.png" alt=""> -->
         <a-image
+            :alt="alt || ''"
             class="max-w-[200px] max-h-[200px] w-[50%] h-[50%]"
             :src="link"
         />
@@ -12,6 +13,7 @@
     </video>
     <!-- <img class="w-full" :src="link" alt=""  v-else-if="type == 'img-full'"> -->
     <a-image
+        :alt="alt || ''"
         class="w-full"
         :src="link"
             v-else-if="type == 'img-full'"
@@ -20,6 +22,7 @@
         <div class="min-w-full w-auto absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2">
             <!-- <img class="" :src="link" alt=""> -->
             <a-image
+                :alt="alt || ''"
                 class="w-full"
                 :src="link"
             />
