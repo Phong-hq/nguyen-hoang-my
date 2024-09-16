@@ -104,21 +104,46 @@ export const useAuthStore = defineStore('authStore', {
         async getPageDetail(slug) {
             try {
                 this.pageDetail = null;
-                const resultList = await pbGetItem(COLLECTION.PAGES, {filter: `slug="${slug}"`});
-                this.pageDetail = resultList || null;
+                if(this.sport?.slug == slug) {
+                    this.pageDetail = sport.value
+                }
+        
+                else if(this.chess?.slug == slug) {
+                this.pageDetail = this.chess
+        
+                }
+                else {
+                    const resultList = await pbGetItem(COLLECTION.PAGES, {filter: `slug="${slug}"`});
+                    this.pageDetail = resultList || null;
+                }
             } catch (error) {
                 console.log(error);
             }
         },
-        async getPageImageList(arr) {
+        // async getPageImageList(arr) {
+        //     try {
+        //         this.pageImageList = [];
+        //         let filter = `id="${arr[i]}"`;
+        //         // for(let i = 0; i < arr.length; i++) {
+        //         //     filter = filter + (i > 0 ? '||' : '') + `id="${arr[i]}"`
+        //         // }
+        //         const resultList = await pbGetFullList(COLLECTION.IMAGE_LIBRARY, {filter});
+        //         this.pageImageList = resultList || [];
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // },
+        async getPageImageList(slug) {
             try {
                 this.pageImageList = [];
-                let filter = '';
-                for(let i = 0; i < arr.length; i++) {
-                    filter = filter + (i > 0 ? '||' : '') + `id="${arr[i]}"`
-                }
+                let filter = `slug="${slug}"`;
+                // for(let i = 0; i < arr.length; i++) {
+                //     filter = filter + (i > 0 ? '||' : '') + `id="${arr[i]}"`
+                // }
                 const resultList = await pbGetFullList(COLLECTION.IMAGE_LIBRARY, {filter});
-                this.pageImageList = resultList || [];
+                this.pageImageList = resultList.sort((a, b) => (b?.order || 0) - (a?.order || 0)) || [];
+                console.log(this.pageImageList, slug);
+                
             } catch (error) {
                 console.log(error);
             }

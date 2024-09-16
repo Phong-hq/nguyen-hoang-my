@@ -9,22 +9,22 @@
   </div>
   <div class="container mx-auto py-[70px]">
     <div class="grid grid-cols-3 gap-7">
-      <div v-for="item in 12" :key="item" v-if="!pageDetail?.field">
+      <div v-for="item in 12" :key="item" v-if="!pageImageList?.length">
         <div class="aspect-[3_/_2]">
           <empty-image />
         </div>
       </div>
-      <div v-for="(item, index) in pageDetail?.field" :key="index" v-else>
+      <div v-for="(item, index) in pageImageList" :key="index" v-else>
         <div class="aspect-[3_/_2]">
           <file-component 
-          :alt="getImageItem(item)?.note || ''"
+          :alt="item.note || ''"
           type="img-full"
-          :class="{'rounded-[50px]': getImageItem(item)?.border == 'rounded'}"
-          :url="getImageItem(item)?.image || ''" 
+          :class="{'rounded-[50px]': item.border == 'rounded'}"
+          :url="item.image || ''" 
           :collection="COLLECTION.IMAGE_LIBRARY" 
           controls
-          :id="getImageItem(item)?.id" />
-          <p class="mt-2">{{ getImageItem(item)?.note }}</p>
+          :id="item.id" />
+          <p class="mt-2">{{ item.note }}</p>
         </div>
       </div>
     </div>
@@ -47,9 +47,9 @@
       try {
         if(route.params.url) {
           await authStore.getPageDetail(String(route.params.url));
-          if(pageDetail.value?.field.length) {
-            await authStore.getPageImageList(pageDetail.value?.field);
-          }
+          // if(pageDetail.value?.field.length) {
+          // }
+          await authStore.getPageImageList(route.params.url);
         }
       } catch (error) {
         
