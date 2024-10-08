@@ -20,9 +20,10 @@ onMounted(async () => {
     authStore.getMyItinerary();
     authStore.getChessInfo();
     authStore.getMusicInfo();
-    authStore.getSportInfo();
+    authStore.getSport();
     authStore.getAllSections();
     authStore.getCommunity();
+    authStore.getAllSliderItinerary()
     await authStore.getInformation();
   } catch (error) {
     console.log(error);

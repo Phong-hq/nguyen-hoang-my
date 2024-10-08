@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="container mx-auto py-[70px]">
-    <div class="grid grid-cols-3 gap-7">
+    <div class="grid grid-cols-3 gap-7" v-if="!pageGroup || pageGroup?.length == 0">
       <div v-for="item in 12" :key="item" v-if="!pageImageList?.length">
         <div class="aspect-[3_/_2]">
           <empty-image />
@@ -28,6 +28,25 @@
         </div>
       </div>
     </div>
+    <template v-else>
+      <div v-for="item in pageGroup" :key=item.id>
+        <p class="heading-1 !text-[24px]">{{ item?.title || '' }}</p>
+        <div class="grid grid-cols-3 gap-7">
+          <div class="aspect-[3_/_2]" v-for="(item, index) in getImageListGroup(item?.group_name || '')" :key="index">
+            <file-component 
+            :alt="item.note || ''"
+            type="img-full"
+            :class="{'rounded-[50px]': item.border == 'rounded'}"
+            :url="item.image || ''" 
+            :collection="COLLECTION.IMAGE_LIBRARY" 
+            controls
+            :id="item.id" />
+            <p class="mt-2">{{ item.note }}</p>
+          </div>
+        </div>
+
+      </div>
+    </template>
   </div>
   </template>
     
@@ -40,7 +59,7 @@
   
   const authStore = useAuthStore();
   
-  const { pageDetail, pageImageList } = storeToRefs(authStore);
+  const { pageDetail, pageImageList, pageGroup } = storeToRefs(authStore);
   
     const route = useRoute();
     onMounted( async () => {
@@ -56,9 +75,8 @@
       }
     })
   
-    const getImageItem = (id) => {
-      return pageImageList.value?.find((image) => image.id == id)
+    const getImageListGroup = (group) => {
+      return pageImageList.value.filter((e) => e.group == group)
     }
-    const lazyLoad = ref(false);
   </script>
     

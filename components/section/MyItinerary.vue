@@ -29,9 +29,9 @@
                                 :modules="modules"
                                 class="mySwiper sc-full"
                             >
-                                <swiper-slide v-for="item in data?.image" :key="item">
+                                <swiper-slide v-for="item in images" :key="item">
                                     <div class="swiper-zoom-container object-cover sc-full bg-white">
-                                        <file-component class="sc-full" :url="item" :collection="collection" :id="imageId"/>
+                                        <file-component class="sc-full" :url="item.image" :collection="collection" :id="item.id" :alt="item.note || ''"/>
                                     </div> 
                                 </swiper-slide>
                             </swiper>
@@ -71,7 +71,11 @@ const props = defineProps({
     },
     data: {
         type: Object,
-        default: ''
+        default: {}
+    },
+    images: {
+        type: Object,
+        default: []
     }
 })
 const authStore = useAuthStore();

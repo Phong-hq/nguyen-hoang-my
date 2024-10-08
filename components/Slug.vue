@@ -21,6 +21,7 @@
         :class="{'rounded-[50px]': getImageItem(item)?.border == 'rounded'}"
         :url="getImageItem(item)?.image || ''" 
         :collection="COLLECTION.IMAGE_LIBRARY" 
+        :alt="getImageItem(item)?.note"
         :id="getImageItem(item)?.id" />
         <p class="mt-2">{{ getImageItem(item)?.note }}</p>
       </div>

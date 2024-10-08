@@ -8,10 +8,14 @@ export const useAuthStore = defineStore('authStore', {
         itinerary: null,
         chess: null,
         music: null,
+        sport_group: null,
         sport: null,
         handMade: null,
         sections: null,
+        slider_itinerary: null,
+        slider_community: null,
         pageDetail: null,
+        pageGroup: null,
         community : null,
         meta : null,
         pageImageList: [],
@@ -26,6 +30,10 @@ export const useAuthStore = defineStore('authStore', {
            }
         },
         async getMyItinerary() {
+            await this.getAllSliderItinerary()
+            await this.getMyItineraryInfo()
+        },
+        async getMyItineraryInfo() {
             try {
                 const resultList = await pbGetItem(COLLECTION.ITINERARY);
                 this.itinerary = resultList;
@@ -49,10 +57,24 @@ export const useAuthStore = defineStore('authStore', {
                 console.log(error);
             }
         },
+        async getSport() {
+            await this.getSportGroup()
+            await this.getSportInfo()
+        },
         async getSportInfo() {
             try {
                 const resultList = await pbGetItem(COLLECTION.SPORT);
                 this.sport = resultList;
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async getSportGroup() {
+            try {
+                const resultList = await pbGetFullList(COLLECTION.SPORT_GROUP);
+                this.sport_group = resultList;
+                console.log(resultList);
+                
             } catch (error) {
                 console.log(error);
             }
@@ -66,6 +88,10 @@ export const useAuthStore = defineStore('authStore', {
             }
         },
         async getCommunity() {
+            await this.getAllSliderCommunity()
+            await this.getCommunityInfo()
+        },
+        async getCommunityInfo() {
             try {
                 const resultList = await pbGetItem(COLLECTION.COMMUNITY);
                 this.community = resultList;
@@ -96,7 +122,22 @@ export const useAuthStore = defineStore('authStore', {
             try {
                 const resultList = await pbGetFullList(COLLECTION.SECTIONS);
                 this.sections = resultList;
-                console.log(this.sections);
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async getAllSliderItinerary() {
+            try {
+                const resultList = await pbGetFullList(COLLECTION.SLIDER_ITINERARY);
+                this.slider_itinerary = resultList.sort((a, b) => (a?.order || 0) - (b?.order || 0)) || [];
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async getAllSliderCommunity() {
+            try {
+                const resultList = await pbGetFullList(COLLECTION.SLIDER_COMMUNITY);
+                this.slider_community = resultList.sort((a, b) => (a?.order || 0) - (b?.order || 0)) || [];
             } catch (error) {
                 console.log(error);
             }
@@ -104,8 +145,10 @@ export const useAuthStore = defineStore('authStore', {
         async getPageDetail(slug) {
             try {
                 this.pageDetail = null;
+                this.pageGroup = null;
                 if(this.sport?.slug == slug) {
-                    this.pageDetail = sport.value
+                    this.pageDetail = this.sport
+                    this.pageGroup = this.sport_group
                 }
         
                 else if(this.chess?.slug == slug) {

@@ -21,4 +21,6 @@ const handleClick = () => {
     router.push({path: '/detail/' + props.data?.slug})
 }
 
+defineExpose({handleClick})
+
 </script>

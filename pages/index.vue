@@ -1,11 +1,11 @@
 <template>
   <div class="pb-[0px]">
     <lazy-section-banner class="section-element" id="home-section" v-show="information"/>
-    <lazy-section-my-itinerary class="section-element"id="my-itinerary-section" :data="itinerary" :collection="COLLECTION.ITINERARY" :image-id="itinerary?.id" v-if="itinerary"  title="My itinerary"/>
+    <lazy-section-my-itinerary class="section-element"id="my-itinerary-section" :data="itinerary" :images="slider_itinerary" :collection="COLLECTION.SLIDER_ITINERARY" :image-id="itinerary?.id" v-if="itinerary"  title="My itinerary"/>
     <lazy-section-play-chess class="section-element" id="play-chess-section" v-if="chess"/>
     <lazy-section-music class="section-element" id="music-section" v-if="music"/>
     <lazy-section-sport2 class="section-element" id="sport-section" v-if="sport"/>
-    <lazy-section-my-itinerary class="section-element" id="community-section" :data="community" :collection="COLLECTION.COMMUNITY" :image-id="community?.id" v-if="community" title="Community"/>
+    <lazy-section-my-itinerary class="section-element" id="community-section" :data="community" :images="slider_community" :collection="COLLECTION.SLIDER_COMMUNITY" :image-id="community?.id" v-if="community" title="Community"/>
     <!-- <lazy-section-handmade class="section-element" id="handmade-section" v-if="handMade"/> -->
      <template  v-for="(item, index) in sections" :key="item.id">
        <lazy-section-created 
@@ -63,6 +63,6 @@ definePageMeta({
   
   const authStore = useAuthStore();
 
-  const { information, itinerary, chess, music, sport, handMade, sections, community } = storeToRefs(authStore)
+  const { information, itinerary, chess, music, sport, handMade, sections, community, slider_itinerary, slider_community } = storeToRefs(authStore)
 </script>
   

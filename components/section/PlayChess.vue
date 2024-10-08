@@ -33,17 +33,32 @@
                 </div>
                 <!-- <file-component class="absolute inset-0 sc-full" :url="chess?.main_image" :collection="COLLECTION.CHESS" :id="chess?.id" /> -->
             </div>
-        <div class="w-full md:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-7">
+        <!-- <div class="w-full md:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-7">
             <div class="aspect-[3_/_2]" v-for="item in 4" :key="item">
                 <file-component class="max-h-full" :url="chess?.list_image?.length ? chess?.list_image[item-1] : ''" :collection="COLLECTION.CHESS" :id="chess?.id" />
             </div>
-        </div>
+        </div> -->
+        <file-category class="w-full md:w-1/2" description="phong" >
+            <file-component class=" max-h-full aspect-[3_/_2]" :url="chess?.list_image?.length ? chess?.list_image[0] : ''" :collection="COLLECTION.CHESS" :id="chess?.id" :normal="true"/>
+        </file-category>
+        <!-- <div class="w-full md:w-1/2 relative">
+            <div class="absolute inset-0 sc-full flex-center bg-[#00000080] z-[2] opacity-[0] duration-200 hover:opacity-[1]">
+                <p class="text-white">asdasf</p>
+            </div>
+        </div> -->
+
     </div>
-    <div class="w-full grid grid-cols-1 md:grid-cols-4 gap-7 mt-7">
+    <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-7 mt-7">
+        <file-category class="w-full" description="phong"  v-for="item in 3" :key="item">
+            <file-component class=" max-h-full aspect-[3_/_2]" :url="chess?.list_image?.length ? chess?.list_image[item + 3] : ''" :collection="COLLECTION.CHESS" :id="chess?.id" :normal="true"/>
+        </file-category>
+    </div>
+
+    <!-- <div class="w-full grid grid-cols-1 md:grid-cols-4 gap-7 mt-7">
         <div class="aspect-[3_/_2]" v-for="item in 4" :key="item">
             <file-component class="max-h-full" :url="chess?.list_image?.length ? chess?.list_image[item + 3] : ''" :collection="COLLECTION.CHESS" :id="chess?.id" />
         </div>
-    </div>
+    </div> -->
         <see-more-btn :data="chess" />
     </section>
 </template>

@@ -44,7 +44,10 @@ export const COLLECTION = {
     IMAGE_LIBRARY: 'image_library',
     SECTIONS: 'sections',
     COMMUNITY: 'community',
-    META: 'meta'
+    META: 'meta',
+    SLIDER_ITINERARY: 'image_slider_my_itinerary',
+    SLIDER_COMMUNITY: 'image_slider_community',
+    SPORT_GROUP:'sport_group',
 }
 
 export default pb;
