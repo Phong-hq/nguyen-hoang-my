@@ -30,7 +30,6 @@
      </div>
     <div class="sc-full overflow-hidden relative" v-else >
         <div class="min-w-full w-auto absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2">
-            {{normal  }}
             <img class="" :src="link" alt="" v-if="normal">
             <a-image
                 :alt="alt || ''"

@@ -38,8 +38,8 @@
                 <file-component class="max-h-full" :url="chess?.list_image?.length ? chess?.list_image[item-1] : ''" :collection="COLLECTION.CHESS" :id="chess?.id" />
             </div>
         </div> -->
-        <file-category class="w-full md:w-1/2" description="phong" >
-            <file-component class=" max-h-full aspect-[3_/_2]" :url="chess?.list_image?.length ? chess?.list_image[0] : ''" :collection="COLLECTION.CHESS" :id="chess?.id" :normal="true"/>
+        <file-category class="w-full md:w-1/2" :description="chess_group[0]?.title" @click="seeMoreRef?.handleClick()">
+            <file-component class=" max-h-full aspect-[3_/_2]" :url="chess_group[0].image" :collection="COLLECTION.CHESS_GROUP" :id="chess_group[0]?.id" :normal="true"/>
         </file-category>
         <!-- <div class="w-full md:w-1/2 relative">
             <div class="absolute inset-0 sc-full flex-center bg-[#00000080] z-[2] opacity-[0] duration-200 hover:opacity-[1]">
@@ -49,8 +49,8 @@
 
     </div>
     <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-7 mt-7">
-        <file-category class="w-full" description="phong"  v-for="item in 3" :key="item">
-            <file-component class=" max-h-full aspect-[3_/_2]" :url="chess?.list_image?.length ? chess?.list_image[item + 3] : ''" :collection="COLLECTION.CHESS" :id="chess?.id" :normal="true"/>
+        <file-category class="w-full" :description="chess_group[item]?.title"  v-for="item in 3" :key="item" @click="seeMoreRef?.handleClick()">
+            <file-component class=" max-h-full aspect-[3_/_2]" :url="chess_group[item].image" :collection="COLLECTION.CHESS_GROUP" :id="chess_group[item]?.id" :normal="true"/>
         </file-category>
     </div>
 
@@ -59,7 +59,7 @@
             <file-component class="max-h-full" :url="chess?.list_image?.length ? chess?.list_image[item + 3] : ''" :collection="COLLECTION.CHESS" :id="chess?.id" />
         </div>
     </div> -->
-        <see-more-btn :data="chess" />
+        <see-more-btn ref="seeMoreRef" :data="chess" />
     </section>
 </template>
 
@@ -79,8 +79,10 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 const authStore = useAuthStore();
 
-const { chess } = storeToRefs(authStore);
+const { chess, chess_group } = storeToRefs(authStore);
 const modules = ref([Zoom, Navigation, Pagination, Autoplay]);
+const seeMoreRef = ref(null)
+
 </script>
 
 <style lang="scss">

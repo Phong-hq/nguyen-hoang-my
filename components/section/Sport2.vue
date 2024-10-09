@@ -2,8 +2,8 @@
     <section class="container mx-auto">
         <p class="heading-1">Sport</p>
         <p class="heading-2">{{ sport?.description || '' }}</p>
-        <div class="flex gap-7">
-            <div class="w-full md:w-1/2 relative md:row-span-2">
+        <div class="flex !grid grid-cols-1 md:grid-cols-2 gap-7">
+            <div class="w-full aspect-[3_/_2] relative">
                 <div class="w-full h-[300px] md:h-full">
                     <swiper
                         :style="{
@@ -32,23 +32,19 @@
                     </swiper>
                 </div>
             </div>
-            <file-category class="w-full md:w-1/2" :description="sport_group[0]?.title"  @click="seeMoreRef?.handleClick()">
+            <!-- <file-category class="w-full" :description="sport_group[0]?.title"  @click="seeMoreRef?.handleClick()">
                 <file-component class=" max-h-full aspect-[3_/_2]" :url="sport_group[0].image" :collection="COLLECTION.SPORT_GROUP" :id="sport_group[0]?.id" :normal="true"/>
+            </file-category> -->
+
+            <file-category class="w-full" :description="sport_group[item]?.title" v-for="item in 3" :key="item" @click="seeMoreRef?.handleClick()">
+                <file-component class=" max-h-full aspect-[3_/_2]" :url="sport_group[item-1].image" :collection="COLLECTION.SPORT_GROUP" :id="sport_group[item-1]?.id" :normal="true"/>
             </file-category>
-            <!-- <div class="w-full md:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-7">        
-                <div class="aspect-[3_/_2]" v-for="item in 4" :key="item">
-                    <file-component class="max-h-full" :url="sport?.list_image?.length ? sport?.list_image[item-1] : ''" :collection="COLLECTION.SPORT" :id="sport?.id" />
-                </div>
-            </div> -->
         </div>
-        <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-7 mt-7">
+        <!-- <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-7 mt-7"> -->
             <!-- <div class="aspect-[3_/_2]" v-for="item in 4" :key="item">
                 <file-component class="max-h-full" :url="sport?.list_image?.length ? sport?.list_image[item + 3] : ''" :collection="COLLECTION.SPORT" :id="sport?.id" />
             </div> -->
-            <file-category class="w-full" :description="sport_group[item]?.title" v-for="item in 3" :key="item" @click="seeMoreRef?.handleClick()">
-                <file-component class=" max-h-full aspect-[3_/_2]" :url="sport_group[item].image" :collection="COLLECTION.SPORT_GROUP" :id="sport_group[item]?.id" :normal="true"/>
-            </file-category>
-        </div>
+        <!-- </div> -->
         <!-- <see-more-btn url="sport"/> -->
         <see-more-btn ref="seeMoreRef" :data="sport"/>
     </section>

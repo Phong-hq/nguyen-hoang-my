@@ -66,8 +66,6 @@
       try {
         if(route.params.url) {
           await authStore.getPageDetail(String(route.params.url));
-          // if(pageDetail.value?.field.length) {
-          // }
           await authStore.getPageImageList(route.params.url);
         }
       } catch (error) {

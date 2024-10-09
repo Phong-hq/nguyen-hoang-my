@@ -48,6 +48,7 @@ export const COLLECTION = {
     SLIDER_ITINERARY: 'image_slider_my_itinerary',
     SLIDER_COMMUNITY: 'image_slider_community',
     SPORT_GROUP:'sport_group',
+    CHESS_GROUP:'play_chess_group',
 }
 
 export default pb;

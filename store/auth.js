@@ -7,6 +7,7 @@ export const useAuthStore = defineStore('authStore', {
         information: null,
         itinerary: null,
         chess: null,
+        chess_group: null,
         music: null,
         sport_group: null,
         sport: null,
@@ -41,10 +42,24 @@ export const useAuthStore = defineStore('authStore', {
                 console.log(error);
             }
         },
+        async getChess() {
+            await this.getChessGroup()
+            await this.getChessInfo()
+        },
         async getChessInfo() {
             try {
                 const resultList = await pbGetItem(COLLECTION.CHESS);
                 this.chess = resultList;
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async getChessGroup() {
+            try {
+                const resultList = await pbGetFullList(COLLECTION.CHESS_GROUP);
+                this.chess_group = resultList;
+                console.log(this.chess_group);
+                
             } catch (error) {
                 console.log(error);
             }
@@ -73,8 +88,6 @@ export const useAuthStore = defineStore('authStore', {
             try {
                 const resultList = await pbGetFullList(COLLECTION.SPORT_GROUP);
                 this.sport_group = resultList;
-                console.log(resultList);
-                
             } catch (error) {
                 console.log(error);
             }
@@ -148,12 +161,18 @@ export const useAuthStore = defineStore('authStore', {
                 this.pageGroup = null;
                 if(this.sport?.slug == slug) {
                     this.pageDetail = this.sport
+                    if(this.sport_group == null) {
+                        await this.getSportGroup()                 
+                    }
                     this.pageGroup = this.sport_group
                 }
         
                 else if(this.chess?.slug == slug) {
                 this.pageDetail = this.chess
-        
+                if(this.chess_group == null) {
+                    await this.getChessGroup()                 
+                }
+                this.pageGroup = this.chess_group
                 }
                 else {
                     const resultList = await pbGetItem(COLLECTION.PAGES, {filter: `slug="${slug}"`});

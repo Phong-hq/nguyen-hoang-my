@@ -18,13 +18,14 @@ onMounted(async () => {
   try {
     loading.value = true;
     authStore.getMyItinerary();
-    authStore.getChessInfo();
+    authStore.getChess();
     authStore.getMusicInfo();
-    authStore.getSport();
     authStore.getAllSections();
     authStore.getCommunity();
     authStore.getAllSliderItinerary()
     await authStore.getInformation();
+    await authStore.getChess();
+    await authStore.getSport();
   } catch (error) {
     console.log(error);
   } finally {
