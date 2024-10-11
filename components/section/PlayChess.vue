@@ -38,7 +38,7 @@
                 <file-component class="max-h-full" :url="chess?.list_image?.length ? chess?.list_image[item-1] : ''" :collection="COLLECTION.CHESS" :id="chess?.id" />
             </div>
         </div> -->
-        <file-category class="w-full md:w-1/2" :description="chess_group[0]?.title" @click="seeMoreRef?.handleClick()">
+        <file-category class="w-full md:w-1/2" :description="chess_group[0]?.title" @click="seeMoreRef?.handleClick(chess_group[0]?.id)">
             <file-component class=" max-h-full aspect-[3_/_2]" :url="chess_group[0].image" :collection="COLLECTION.CHESS_GROUP" :id="chess_group[0]?.id" :normal="true"/>
         </file-category>
         <!-- <div class="w-full md:w-1/2 relative">
@@ -49,7 +49,7 @@
 
     </div>
     <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-7 mt-7">
-        <file-category class="w-full" :description="chess_group[item]?.title"  v-for="item in 3" :key="item" @click="seeMoreRef?.handleClick()">
+        <file-category class="w-full" :description="chess_group[item]?.title"  v-for="item in 3" :key="item" @click="seeMoreRef?.handleClick(chess_group[item]?.id)">
             <file-component class=" max-h-full aspect-[3_/_2]" :url="chess_group[item].image" :collection="COLLECTION.CHESS_GROUP" :id="chess_group[item]?.id" :normal="true"/>
         </file-category>
     </div>

@@ -29,7 +29,8 @@
       </div>
     </div>
     <template v-else>
-      <div v-for="item in pageGroup" :key=item.id>
+      <div v-for="item in pageGroup" :key="item.id" class="relative">
+        <div class="absolute opacity-[0] top-[-100px]"  :id="`group-images-${item.id}`"></div>
         <p class="heading-1 !text-[24px]">{{ item?.title || '' }}</p>
         <div class="grid grid-cols-3 gap-7">
           <div class="aspect-[3_/_2]" v-for="(item, index) in getImageListGroup(item?.group_name || '')" :key="index">
@@ -59,7 +60,7 @@
   
   const authStore = useAuthStore();
   
-  const { pageDetail, pageImageList, pageGroup } = storeToRefs(authStore);
+  const { pageDetail, pageImageList, pageGroup, groupActiveId } = storeToRefs(authStore);
   
     const route = useRoute();
     onMounted( async () => {
@@ -70,6 +71,16 @@
         }
       } catch (error) {
         
+      }
+      
+      if(groupActiveId.value != null) {
+        const element = document.getElementById(`group-images-${groupActiveId.value}`)
+        if(element) {
+          setTimeout(() => {
+            element.scrollIntoView({behavior: 'smooth'})
+          }, 300);
+        }
+        authStore.setGroupActiveId(null)
       }
     })
   

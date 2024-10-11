@@ -7,8 +7,10 @@
 </template>
 
 <script setup>
+import { useAuthStore } from '~/store/auth';
 
 const router = useRouter();
+const authStore = useAuthStore();
 
 const props = defineProps({
     data: {
@@ -16,8 +18,9 @@ const props = defineProps({
         default: {}
     }
 })
-const handleClick = () => {
+const handleClick = (id) => {
     // router.push({path: '/slug/' + props.data?.slug})
+    authStore.setGroupActiveId(id || null)
     router.push({path: '/detail/' + props.data?.slug})
 }
 

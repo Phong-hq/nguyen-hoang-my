@@ -15,7 +15,7 @@
     <!-- <img class="w-full" :src="link" alt=""  v-else-if="type == 'img-full'"> -->
      <div class="w-full" v-else-if="type == 'img-full'">
         <teleport to="body">
-            <div class="fixed left-0 bottom-0 bg-[#ffffffbf] w-full z-[9999] flex-center font-semibold text-3xl p-7 px-[20%]" v-if="alt && showAlt">
+            <div class="fixed right-1/2 translate-x-1/2 bottom-0 bg-[#ffffffbf] w-full z-[9999] flex-center font-semibold text-xl p-3 px-7" :style="`width: ${!width ? '100%': width + 'px'}`" v-if="alt && showAlt">
                 {{alt}}
             </div>
         </teleport>
@@ -40,7 +40,7 @@
             />
         </div>
         <teleport to="body">
-            <div class="fixed left-0 bottom-0 bg-[#ffffffbf] w-full z-[9999] flex-center font-semibold text-3xl p-7 px-[20%]" v-if="alt && showAlt">
+            <div class="fixed right-1/2 translate-x-1/2 bottom-0 bg-[#ffffffbf] w-full z-[9999] flex-center font-semibold text-xl p-3 px-7" :style="`width: ${!width ? '100%': width + 'px'}`" v-if="alt && showAlt">
                 {{alt}}
             </div>
         </teleport>
@@ -57,6 +57,7 @@
     });
     const videoRef = ref(null)
     const showAlt = ref(false)
+    const width = ref(null)
     onMounted(() => {
         if(!props.vdAutoplay && videoRef.value != null) {
             videoRef.value?.pause()
@@ -66,7 +67,15 @@
     const previewType = {
         onVisibleChange: (visible, prevVisible) => {
             if(visible) {
+                
                 setTimeout(() => {
+                    const image = document.querySelector(`.ant-image-preview-body img[src='${link.value}']`)
+                    if(image) {
+                        width.value = image.offsetWidth
+                        
+                    }
+                    console.log(image);
+                    console.log(image.offsetWidth);
                     showAlt.value = true
                 }, 300);
                 

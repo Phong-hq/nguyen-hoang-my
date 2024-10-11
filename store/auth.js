@@ -19,6 +19,7 @@ export const useAuthStore = defineStore('authStore', {
         pageGroup: null,
         community : null,
         meta : null,
+        groupActiveId : null,
         pageImageList: [],
     }),
     actions: {
@@ -58,7 +59,6 @@ export const useAuthStore = defineStore('authStore', {
             try {
                 const resultList = await pbGetFullList(COLLECTION.CHESS_GROUP);
                 this.chess_group = resultList;
-                console.log(this.chess_group);
                 
             } catch (error) {
                 console.log(error);
@@ -182,6 +182,9 @@ export const useAuthStore = defineStore('authStore', {
                 console.log(error);
             }
         },
+        setGroupActiveId(id) {
+            this.groupActiveId = id;
+        },
         // async getPageImageList(arr) {
         //     try {
         //         this.pageImageList = [];
@@ -204,7 +207,6 @@ export const useAuthStore = defineStore('authStore', {
                 // }
                 const resultList = await pbGetFullList(COLLECTION.IMAGE_LIBRARY, {filter});
                 this.pageImageList = resultList.sort((a, b) => (b?.order || 0) - (a?.order || 0)) || [];
-                console.log(this.pageImageList, slug);
                 
             } catch (error) {
                 console.log(error);

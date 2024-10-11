@@ -36,7 +36,7 @@
                 <file-component class=" max-h-full aspect-[3_/_2]" :url="sport_group[0].image" :collection="COLLECTION.SPORT_GROUP" :id="sport_group[0]?.id" :normal="true"/>
             </file-category> -->
 
-            <file-category class="w-full" :description="sport_group[item]?.title" v-for="item in 3" :key="item" @click="seeMoreRef?.handleClick()">
+            <file-category class="w-full" :description="sport_group[item-1]?.title" v-for="item in 3" :key="item" @click="seeMoreRef?.handleClick(sport_group[item-1]?.id)">
                 <file-component class=" max-h-full aspect-[3_/_2]" :url="sport_group[item-1].image" :collection="COLLECTION.SPORT_GROUP" :id="sport_group[item-1]?.id" :normal="true"/>
             </file-category>
         </div>
