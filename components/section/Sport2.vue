@@ -36,8 +36,8 @@
                 <file-component class=" max-h-full aspect-[3_/_2]" :url="sport_group[0].image" :collection="COLLECTION.SPORT_GROUP" :id="sport_group[0]?.id" :normal="true"/>
             </file-category> -->
 
-            <file-category class="w-full" :description="sport_group[item-1]?.title" v-for="item in 3" :key="item" @click="seeMoreRef?.handleClick(sport_group[item-1]?.id)">
-                <file-component class=" max-h-full aspect-[3_/_2]" :url="sport_group[item-1].image" :collection="COLLECTION.SPORT_GROUP" :id="sport_group[item-1]?.id" :normal="true"/>
+            <file-category class="w-full" :description="item?.title" v-for="item in sport_group" :key="item" @click="seeMoreRef?.handleClick(item?.id)">
+                <file-component class=" max-h-full aspect-[3_/_2]" :url="item?.image" :collection="COLLECTION.SPORT_GROUP" :id="item?.id" :normal="true"/>
             </file-category>
         </div>
         <!-- <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-7 mt-7"> -->
