@@ -5,7 +5,7 @@
                 <file-component class="" :url="information?.banner" :collection="COLLECTION.INFO" :id="information?.id"/>
             </div> -->
             <div class="w-full grow relative">
-                <file-component class="w-full" :url="information?.introduce_video" muted :vd-autoplay="true" autoplay loop type="video" :collection="COLLECTION.INFO" :id="information?.id"/>
+                <file-component class="w-full" :url="information?.introduce_video" :vd-autoplay="true" controls autoplay loop type="video" :collection="COLLECTION.INFO" :id="information?.id"/>
             </div>
             <div class="w-full h-[80px] md:h-[80px] bg-[#ffffff27] backdrop-blur-[133px] absolute bottom-0 left-0">
                 <div class="flex flex-col md:flex-row h-full items-center justify-center md:justify-between container mx-auto px-5 gap-2">
