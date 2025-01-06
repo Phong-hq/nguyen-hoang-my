@@ -5,9 +5,9 @@
                 <file-component class="" :url="information?.banner" :collection="COLLECTION.INFO" :id="information?.id"/>
             </div> -->
             <div class="w-full grow relative">
-                <file-component class="w-full" :url="information?.introduce_video" :vd-autoplay="true" controls autoplay loop type="video" :collection="COLLECTION.INFO" :id="information?.id"/>
+                <file-component class="w-full" :url="information?.introduce_video" :vd-autoplay="true" autoplay controls loop type="video" :collection="COLLECTION.INFO" :id="information?.id"/>
             </div>
-            <div class="w-full h-[80px] md:h-[80px] bg-[#ffffff27] backdrop-blur-[133px] absolute bottom-0 left-0">
+            <div class="w-full h-[80px] md:h-[80px] bg-[#ffffffa3] backdrop-blur-[133px] absolute bottom-0 left-0">
                 <div class="flex flex-col md:flex-row h-full items-center justify-center md:justify-between container mx-auto px-5 gap-2">
                     <div class=" flex items-center gap-3 md:gap-7">
                         <a class="hover:text-primary" :href="information?.instagram" target="_blank">
@@ -21,14 +21,14 @@
                         </a>
                     </div>
                     <div class="flex items-center gap-7">
-                        <span class="flex items-center gap-1 hover:text-primary">
+                        <a class="flex items-center gap-1 hover:text-primary":href="information?.mail ? `mailto:`+information?.mail : ''">
                             <MailOutlined />
                             {{information?.mail}}
-                        </span>
-                        <span class="flex items-center gap-1 hover:text-primary">
+                        </a>
+                        <a class="flex items-center gap-1 hover:text-primary" :href="information?.phone ? `tel:`+information?.phone : ''">
                             <PhoneOutlined />
                             {{information?.phone}}
-                        </span>
+                        </a>
                     </div>
                 </div>
                 <!-- <div class="container h-full grid grid-cols-4 mx-auto text-[18px]">
