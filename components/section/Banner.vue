@@ -4,8 +4,9 @@
             <!-- <div class="shrink-0 min-w-[300px] w-[40%] aspect-[3_/_2]">
                 <file-component class="" :url="information?.banner" :collection="COLLECTION.INFO" :id="information?.id"/>
             </div> -->
-            <div class="w-full grow relative">
-                <file-component class="w-full" :url="information?.introduce_video" :vd-autoplay="true" autoplay controls loop type="video" :collection="COLLECTION.INFO" :id="information?.id"/>
+            <div class="w-full grow relative"  id="bannerRef">
+                <!-- <file-component class="w-full" :url="information?.introduce_video" :vd-autoplay="true" autoplay controls loop type="video" :collection="COLLECTION.INFO" :id="information?.id"/> -->
+                <file-component class="w-full" ref="bannerRef" :url="information?.introduce_video" @canplay="handleVideoLoad" controls loop type="video" :collection="COLLECTION.INFO" :id="information?.id"/>
             </div>
             <div class="w-full h-[80px] md:h-[80px] bg-[#ffffffa3] backdrop-blur-[133px] absolute bottom-0 left-0">
                 <div class="flex flex-col md:flex-row h-full items-center justify-center md:justify-between container mx-auto px-5 gap-2">
@@ -73,5 +74,12 @@ const DEFAULT_VALUE = '----------------------------------------'
 
 onMounted(() => {
 })
+
+const handleVideoLoad = () => {
+    const video = document.querySelector('#bannerRef video')
+    video?.play()
+}
+
+const bannerRef = ref(null)
 </script>
 
