@@ -5,8 +5,14 @@
                 <file-component class="" :url="information?.banner" :collection="COLLECTION.INFO" :id="information?.id"/>
             </div> -->
             <div class="w-full grow relative"  id="bannerRef">
+                <a-button class="!w-[50px] h-[50px] !bg-[#ffffffa3] absolute left-10 top-10 z-[1] !border-none"  shape="circle" @click="isMuted = !isMuted">
+                    <template #icon>
+                        <img class="w-10 h-10 anticon" src="@/assets/images/icons/volume_off.png" alt="" v-if="isMuted">
+                        <img class="w-10 h-10 anticon" src="@/assets/images/icons/volume_hight.png" alt="" v-else>
+                    </template>
+                </a-button>
                 <!-- <file-component class="w-full" :url="information?.introduce_video" :vd-autoplay="true" autoplay controls loop type="video" :collection="COLLECTION.INFO" :id="information?.id"/> -->
-                <file-component class="w-full" ref="bannerRef" :url="information?.introduce_video" @canplay="handleVideoLoad" controls loop type="video" :collection="COLLECTION.INFO" :id="information?.id"/>
+                <file-component class="w-full" :url="information?.introduce_video" :muted="isMuted" :vd-autoplay="true" autoplay controls loop type="video" :collection="COLLECTION.INFO" :id="information?.id"/>
             </div>
             <div class="w-full h-[80px] md:h-[80px] bg-[#ffffffa3] backdrop-blur-[133px] absolute bottom-0 left-0">
                 <div class="flex flex-col md:flex-row h-full items-center justify-center md:justify-between container mx-auto px-5 gap-2">
@@ -74,6 +80,8 @@ const DEFAULT_VALUE = '----------------------------------------'
 
 onMounted(() => {
 })
+
+const isMuted = ref(true)
 
 const handleVideoLoad = () => {
     const video = document.querySelector('#bannerRef video')
