@@ -40,7 +40,7 @@ definePageMeta({
   //         },
   //         {
   //           name: "image",
-  //           content: `https://admin.nguyen-hoang-my.com/api/files/${COLLECTION.META}/${data?.id}/${data?.image}`,
+  //           content: `https://nhm-pb.srv02.dtsmart.dev/api/files/${COLLECTION.META}/${data?.id}/${data?.image}`,
   //         },
   //         {
   //           property: "og:title",
@@ -52,7 +52,7 @@ definePageMeta({
   //         },
   //         {
   //           property: "og:image",
-  //           content: `https://admin.nguyen-hoang-my.com/api/files/${COLLECTION.META}/${data?.id}/${data?.image}`,
+  //           content: `https://nhm-pb.srv02.dtsmart.dev/api/files/${COLLECTION.META}/${data?.id}/${data?.image}`,
   //         },
   //       ]
   //     })

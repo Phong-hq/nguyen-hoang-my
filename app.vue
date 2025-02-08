@@ -44,7 +44,7 @@ const setMeta = async () => {
           },
           {
               name: "image",
-              content: `https://admin.nguyen-hoang-my.com/api/files/${COLLECTION.META}/${data?.id}/${data?.image}`,
+              content: `https://nhm-pb.srv02.dtsmart.dev/api/files/${COLLECTION.META}/${data?.id}/${data?.image}`,
             },
           {
               property: "og:title",
@@ -56,7 +56,7 @@ const setMeta = async () => {
             },
             {
               property: "og:image",
-              content: `https://admin.nguyen-hoang-my.com/api/files/${COLLECTION.META}/${data?.id}/${data?.image}`,
+              content: `https://nhm-pb.srv02.dtsmart.dev/api/files/${COLLECTION.META}/${data?.id}/${data?.image}`,
             },
       ]
   })

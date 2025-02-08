@@ -49,7 +49,7 @@
 
 <script setup>
     const props = defineProps(['type', 'url', 'collection', 'id', 'vdAutoplay', 'alt', 'normal']);
-    const link = computed(() => `https://admin.nguyen-hoang-my.com/api/files/${props.collection}/${props.id}/${props.url}`);
+    const link = computed(() => `https://nhm-pb.srv02.dtsmart.dev/api/files/${props.collection}/${props.id}/${props.url}`);
     const isVideo = computed(() => {
         const videoExtensions = ['.mp4', '.webm', '.ogg', '.avi', '.mov', '.mkv'];
         const extension = props.url.split('.').pop().toLowerCase();
