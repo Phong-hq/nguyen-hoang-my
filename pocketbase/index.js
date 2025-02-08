@@ -1,7 +1,7 @@
 import PocketBase from 'pocketbase';
 
 // const pb = new PocketBase('http://127.0.0.1:8090');
-const pb = new PocketBase('https://admin.nguyen-hoang-my.com/');
+const pb = new PocketBase('https://nhm-pb.srv02.dtsmart.dev/');
 
 export const pbGetItem = (collection, filter) => {
     return new Promise( async (resolve, reject) => {
